@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCORR Platform Overzicht - Infographic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --scorr-electric: #00FF88;
+            --scorr-deep: #0A0E27;
+            --scorr-slate: #1E2749;
+            --scorr-accent: #FF3D71;
+            --scorr-cloud: #F5F7FA;
+            --scorr-warning: #FFB800;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: var(--scorr-deep);
+            min-height: 100vh;
+            padding: 60px 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            font-size: 96px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Flow Container */
+        .flow-container {
+            position: relative;
+        }
+
+        /* Level */
+        .level {
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .level-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .level-number {
+            width: 60px;
+            height: 60px;
+            background: var(--scorr-electric);
+            color: var(--scorr-deep);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .level-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            position: relative;
+        }
+
+        /* Card */
+        .card {
+            background: var(--scorr-slate);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--scorr-electric);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+        }
+
+        .card-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .card-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .card-features {
+            list-style: none;
+        }
+
+        .card-features li {
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-features li::before {
+            content: "✓";
+            color: var(--scorr-electric);
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        /* Special Cards */
+        .card.platform {
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            border: none;
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        .card.platform .card-icon {
+            font-size: 96px;
+        }
+
+        .card.platform .card-title {
+            color: var(--scorr-deep);
+            font-size: 48px;
+        }
+
+        .card.platform .card-description {
+            color: var(--scorr-deep);
+            opacity: 0.8;
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+
+        .card.club {
+            border-color: var(--scorr-warning);
+        }
+
+        .card.team {
+            border-color: var(--scorr-accent);
+        }
+
+        .card.parents {
+            border-color: var(--scorr-electric);
+        }
+
+        /* Connection Lines */
+        .connection-arrow {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .arrow {
+            font-size: 48px;
+            color: var(--scorr-electric);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .arrow-label {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--scorr-deep);
+            color: var(--scorr-electric);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 16px;
+        }
+
+        .card.platform .badge {
+            background: rgba(10, 14, 39, 0.3);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 80px;
+            padding: 40px;
+            background: var(--scorr-slate);
+            border-radius: 24px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--scorr-electric);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 64px;
+            }
+
+            .title {
+                font-size: 36px;
+            }
+
+            .level-title {
+                font-size: 28px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">SCORR</div>
+            <div class="tagline">Live Scores. Real Football.</div>
+            <h1 class="title">Platform Overzicht</h1>
+            <p class="subtitle">Van scheidsrechter naar ouders in real-time</p>
+        </div>
+
+        <!-- Level 1: Platform -->
+        <div class="level">
+            <div class="cards-grid">
+                <div class="card platform">
+                    <div class="card-icon">🚀</div>
+                    <h2 class="card-title">SCORR Platform</h2>
+                    <p class="card-description">
+                        Het centrale platform voor live score tracking bij amateurvoetbal. 
+                        Van lokale clubs tot landelijke dekking.
+                    </p>
+                    <div class="badge">Pilot: FC Purmerend & VV Monnickendam</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="connection-arrow">
+            <div class="arrow">↓</div>
+            <div class="arrow-label">Gebruikt door</div>
+        </div>
+
+        <!-- Level 2: Club Accounts -->
+        <div class="level">
+            <div class="level-header">
+                <div class="level-number">1</div>
+                <h2 class="level-title">Club Accounts</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card club">
+                    <div class="card-icon">🏆</div>
+                    <h3 class="card-title">Club Admin</h3>
+                    <p class="card-description">
+                        Eén account per voetbalclub voor volledige controle over alle teams.
+                    </p>
+                    <ul class="card-features">
+                        <li>Beheer alle clubteams</li>
+                        <li>Seizoen management</li>
+                        <li>Team Manager accounts aanmaken</li>
+                        <li>Analytics en statistieken</li>
+                    </ul>
+                    <div class="badge">1 per club</div>
+                </div>
+
+                <div class="card club">
+                    <div class="card-icon">📺</div>
+                    <h3 class="card-title">Kantine Display</h3>
+                    <p class="card-description">
+                        Live scores van alle clubteams op groot scherm in de kantine.
+                    </p>
+                    <ul class="card-features">
+                        <li>Real-time score updates</li>
+                        <li>Alle teams tegelijk</li>
+                        <li>Thuis én uitwedstrijden</li>
+                        <li>Auto-refresh elke 10 sec</li>
+                    </ul>
+                    <div class="badge">Read-only toegang</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="connection-arrow">
+            <div class="arrow">↓</div>
+            <div class="arrow-label">Beheert</div>
+        </div>
+
+        <!-- Level 3: Team Accounts -->
+        <div class="level">
+            <div class="level-header">
+                <div class="level-number">2</div>
+                <h2 class="level-title">Team Accounts</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card team">
+                    <div class="card-icon">⚽</div>
+                    <h3 class="card-title">Team Manager</h3>
+                    <p class="card-description">
+                        Eén gedeeld account per team voor live score registratie tijdens wedstrijden.
+                    </p>
+                    <ul class="card-features">
+                        <li>Scheidsrechter</li>
+                        <li>Spelbegeleider</li>
+                        <li>Assistent trainer</li>
+                        <li>Ouder</li>
+                    </ul>
+                    <div class="badge">Team Code: FCP1-2526</div>
+                </div>
+
+                <div class="card team">
+                    <div class="card-icon">📱</div>
+                    <h3 class="card-title">Live Registratie</h3>
+                    <p class="card-description">
+                        Registreer doelpunten, kaarten en events real-time vanaf je telefoon.
+                    </p>
+                    <ul class="card-features">
+                        <li>Doelpunten + doelpuntenmakers</li>
+                        <li>Gele en rode kaarten</li>
+                        <li>Live timer (blijft lopen op achtergrond)</li>
+                        <li>PDF wedstrijdverslag</li>
+                    </ul>
+                    <div class="badge">Mobiel-vriendelijk</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="connection-arrow">
+            <div class="arrow">↓</div>
+            <div class="arrow-label">Deelt met</div>
+        </div>
+
+        <!-- Level 4: Parents/Viewers -->
+        <div class="level">
+            <div class="level-header">
+                <div class="level-number">3</div>
+                <h2 class="level-title">Ouders & Supporters</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card parents">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <h3 class="card-title">Live Wedstrijd Link</h3>
+                    <p class="card-description">
+                        Elke wedstrijd krijgt een unieke link die gedeeld wordt in de WhatsApp groep.
+                    </p>
+                    <ul class="card-features">
+                        <li>Geen login nodig</li>
+                        <li>Real-time score updates</li>
+                        <li>Doelpuntenmakers zichtbaar</li>
+                        <li>Live timer</li>
+                        <li>Deel via WhatsApp/SMS</li>
+                    </ul>
+                    <div class="badge">scorr.app/live/FCP1-2802</div>
+                </div>
+
+                <div class="card parents">
+                    <div class="card-icon">📲</div>
+                    <h3 class="card-title">Seizoen Link</h3>
+                    <p class="card-description">
+                        Ouders ontvangen aan begin van seizoen vaste team link voor alle wedstrijden.
+                    </p>
+                    <ul class="card-features">
+                        <li>Alle wedstrijden van het team</li>
+                        <li>Huidige live wedstrijd</li>
+                        <li>Laatste 5 wedstrijden</li>
+                        <li>Seizoen statistieken</li>
+                        <li>Topscorers</li>
+                    </ul>
+                    <div class="badge">scorr.app/team/fcp-1</div>
+                </div>
+
+                <div class="card parents">
+                    <div class="card-icon">📧</div>
+                    <h3 class="card-title">Notificaties</h3>
+                    <p class="card-description">
+                        Optionele push notificaties voor doelpunten en belangrijke momenten.
+                    </p>
+                    <ul class="card-features">
+                        <li>Wedstrijd start notificatie</li>
+                        <li>Doelpunt alerts (optioneel)</li>
+                        <li>Halftime & eindstand</li>
+                        <li>Link naar live wedstrijd</li>
+                    </ul>
+                    <div class="badge">Opt-in via settings</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Platform</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Amateurclubs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Teams</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Ouders</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">SCORR - Live Scores. Real Football. | Seizoen 2025/2026 Pilot</p>
+        </div>
+    </div>
+</body>
+</html>

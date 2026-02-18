@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Selectie - SCORR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --scorr-electric: #00FF88;
+            --scorr-deep: #0A0E27;
+            --scorr-slate: #1E2749;
+            --scorr-accent: #FF3D71;
+            --scorr-cloud: #F5F7FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: var(--scorr-cloud);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--scorr-deep);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--scorr-electric);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--scorr-deep);
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: #E8EBF0;
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #E8EBF0;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #999;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-circle {
+            border-color: var(--scorr-electric);
+            background: var(--scorr-electric);
+            color: var(--scorr-deep);
+        }
+
+        .step.completed .step-circle {
+            border-color: var(--scorr-electric);
+            background: var(--scorr-electric);
+            color: var(--scorr-deep);
+        }
+
+        .step-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .step.active .step-label {
+            color: var(--scorr-deep);
+        }
+
+        /* Section */
+        .section {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Club Selection */
+        .club-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .club-card {
+            border: 3px solid #E8EBF0;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .club-card:hover {
+            border-color: var(--scorr-electric);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .club-card input[type="radio"] {
+            display: none;
+        }
+
+        .club-card:has(input:checked) {
+            border-color: var(--scorr-electric);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .club-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: white;
+            padding: 8px;
+        }
+
+        .club-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .club-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 8px;
+        }
+
+        .club-location {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .selected-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 28px;
+            height: 28px;
+            background: var(--scorr-electric);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: var(--scorr-deep);
+            font-weight: 700;
+        }
+
+        .club-card:has(input:checked) .selected-badge {
+            display: flex;
+        }
+
+        /* Team & Class Selection */
+        .form-group {
+            margin-bottom: 32px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 12px;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #E8EBF0;
+            border-radius: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            color: var(--scorr-deep);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%230A0E27' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            padding-right: 50px;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--scorr-electric);
+            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
+        }
+
+        .form-select:disabled {
+            background: #F5F7FA;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 2px solid var(--scorr-deep);
+            color: var(--scorr-deep);
+        }
+
+        .btn-secondary:hover {
+            background: var(--scorr-deep);
+            color: white;
+        }
+
+        .btn-primary {
+            background: var(--scorr-electric);
+            color: var(--scorr-deep);
+        }
+
+        .btn-primary:hover {
+            background: #00CC6A;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: #E8EBF0;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Pilot Badge */
+        .pilot-info {
+            background: linear-gradient(135deg, var(--scorr-accent), #ff1f5a);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .pilot-icon {
+            font-size: 32px;
+        }
+
+        .pilot-text {
+            flex: 1;
+        }
+
+        .pilot-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pilot-description {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .section {
+                padding: 30px 24px;
+            }
+
+            .club-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-steps {
+                margin-bottom: 40px;
+            }
+
+            .step-label {
+                font-size: 11px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-logo">SCORR</div>
+        <div class="header-user">
+            <div class="user-avatar" id="userAvatar">JJ</div>
+            <div class="user-name" id="userName">Jan Jansen</div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step completed">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Account</div>
+            </div>
+            <div class="step active">
+                <div class="step-circle">2</div>
+                <div class="step-label">Club & Team</div>
+            </div>
+            <div class="step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Start</div>
+            </div>
+        </div>
+
+        <!-- Pilot Info -->
+        <div class="pilot-info">
+            <div class="pilot-icon">🚀</div>
+            <div class="pilot-text">
+                <div class="pilot-title">Pilot Fase</div>
+                <div class="pilot-description">
+                    Deze pilot is beschikbaar voor FC Purmerend en VV Monnickendam. Meer clubs volgen binnenkort!
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Club Selection -->
+        <div class="section" id="clubSection">
+            <h2 class="section-title">1. Kies je club</h2>
+            <p class="section-description">
+                Selecteer de voetbalvereniging waar je team bij hoort.
+            </p>
+
+            <div class="club-grid">
+                <label class="club-card fcp">
+                    <input type="radio" name="club" value="fc-purmerend" id="fcpRadio">
+                    <div class="selected-badge">✓</div>
+                    <div class="club-logo">
+                        <img src="logo_fcpurmerend_nieuw.png" alt="FC Purmerend">
+                    </div>
+                    <div class="club-name">FC Purmerend</div>
+                    <div class="club-location">📍 Purmerend, Noord-Holland</div>
+                </label>
+
+                <label class="club-card vvm">
+                    <input type="radio" name="club" value="vv-monnickendam" id="vvmRadio">
+                    <div class="selected-badge">✓</div>
+                    <div class="club-logo">
+                        <img src="logo-512-512.png" alt="VV Monnickendam">
+                    </div>
+                    <div class="club-name">VV Monnickendam</div>
+                    <div class="club-location">📍 Monnickendam, Noord-Holland</div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 2: Team & Class Selection -->
+        <div class="section" id="teamSection" style="opacity: 0.5; pointer-events: none;">
+            <h2 class="section-title">2. Selecteer je team en klasse</h2>
+            <p class="section-description">
+                Kies het team waar je wedstrijden voor wilt bijhouden en de klasse waarin ze spelen.
+            </p>
+
+            <div class="form-group">
+                <label class="form-label" for="teamSelect">Team</label>
+                <select id="teamSelect" class="form-select" disabled>
+                    <option value="">Kies eerst een club</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="classSelect">Klasse</label>
+                <select id="classSelect" class="form-select" disabled>
+                    <option value="">Kies eerst een team</option>
+                </select>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="window.location.href='scorr-login.html'">
+                    Terug
+                </button>
+                <button class="btn btn-primary" id="continueBtn" disabled>
+                    Doorgaan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load user data
+        const userData = JSON.parse(localStorage.getItem('scorr_user') || '{}');
+        if (userData.firstName && userData.lastName) {
+            document.getElementById('userName').textContent = `${userData.firstName} ${userData.lastName}`;
+            const initials = userData.firstName.charAt(0) + userData.lastName.charAt(0);
+            document.getElementById('userAvatar').textContent = initials.toUpperCase();
+        }
+
+        // Team data per club
+        const clubTeams = {
+            'fc-purmerend': [
+                { value: 'fcp-1', label: 'FC Purmerend 1' },
+                { value: 'fcp-2', label: 'FC Purmerend 2' },
+                { value: 'fcp-3', label: 'FC Purmerend 3' },
+                { value: 'fcp-o19-1', label: 'FC Purmerend O19-1' },
+                { value: 'fcp-o17-1', label: 'FC Purmerend O17-1' },
+                { value: 'fcp-o15-1', label: 'FC Purmerend O15-1' }
+            ],
+            'vv-monnickendam': [
+                { value: 'vvm-1', label: 'VV Monnickendam 1' },
+                { value: 'vvm-2', label: 'VV Monnickendam 2' },
+                { value: 'vvm-3', label: 'VV Monnickendam 3' },
+                { value: 'vvm-o19-1', label: 'VV Monnickendam O19-1' },
+                { value: 'vvm-o17-1', label: 'VV Monnickendam O17-1' },
+                { value: 'vvm-o15-1', label: 'VV Monnickendam O15-1' }
+            ]
+        };
+
+        // Class options
+        const classOptions = [
+            { value: '1e-klasse', label: '1e Klasse' },
+            { value: '2e-klasse', label: '2e Klasse' },
+            { value: '3e-klasse', label: '3e Klasse' },
+            { value: '4e-klasse', label: '4e Klasse' },
+            { value: 'hoofdklasse', label: 'Hoofdklasse' },
+            { value: 'a-junioren', label: 'A-Junioren' },
+            { value: 'b-junioren', label: 'B-Junioren' },
+            { value: 'c-junioren', label: 'C-Junioren' }
+        ];
+
+        let selectedClub = '';
+        let selectedTeam = '';
+        let selectedClass = '';
+
+        // Club selection
+        document.querySelectorAll('input[name="club"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                selectedClub = this.value;
+                
+                // Enable team section
+                const teamSection = document.getElementById('teamSection');
+                teamSection.style.opacity = '1';
+                teamSection.style.pointerEvents = 'auto';
+                
+                // Populate team select
+                const teamSelect = document.getElementById('teamSelect');
+                teamSelect.disabled = false;
+                teamSelect.innerHTML = '<option value="">Selecteer een team</option>';
+                
+                clubTeams[selectedClub].forEach(team => {
+                    const option = document.createElement('option');
+                    option.value = team.value;
+                    option.textContent = team.label;
+                    teamSelect.appendChild(option);
+                });
+
+                // Reset team and class
+                selectedTeam = '';
+                selectedClass = '';
+                document.getElementById('classSelect').disabled = true;
+                document.getElementById('classSelect').innerHTML = '<option value="">Kies eerst een team</option>';
+                document.getElementById('continueBtn').disabled = true;
+            });
+        });
+
+        // Team selection
+        document.getElementById('teamSelect').addEventListener('change', function() {
+            selectedTeam = this.value;
+            
+            if (selectedTeam) {
+                // Enable class select
+                const classSelect = document.getElementById('classSelect');
+                classSelect.disabled = false;
+                classSelect.innerHTML = '<option value="">Selecteer een klasse</option>';
+                
+                classOptions.forEach(cls => {
+                    const option = document.createElement('option');
+                    option.value = cls.value;
+                    option.textContent = cls.label;
+                    classSelect.appendChild(option);
+                });
+            }
+            
+            checkFormCompletion();
+        });
+
+        // Class selection
+        document.getElementById('classSelect').addEventListener('change', function() {
+            selectedClass = this.value;
+            checkFormCompletion();
+        });
+
+        // Check if form is complete
+        function checkFormCompletion() {
+            const continueBtn = document.getElementById('continueBtn');
+            if (selectedClub && selectedTeam && selectedClass) {
+                continueBtn.disabled = false;
+            } else {
+                continueBtn.disabled = true;
+            }
+        }
+
+        // Continue button
+        document.getElementById('continueBtn').addEventListener('click', function() {
+            // Store selections
+            const teamData = {
+                club: selectedClub,
+                team: selectedTeam,
+                class: selectedClass
+            };
+            
+            localStorage.setItem('scorr_team', JSON.stringify(teamData));
+            
+            // Redirect to referee app
+            window.location.href = 'fc-purmerend-scheidsrechter-v2.html';
+        });
+    </script>
+</body>
+</html>

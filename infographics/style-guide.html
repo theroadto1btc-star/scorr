@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCORR Brand Style Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: #F5F7FA;
+            color: #0A0E27;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* Cover Page */
+        .cover {
+            background: linear-gradient(135deg, #0A0E27 0%, #1E2749 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 61, 113, 0.15) 0%, transparent 50%);
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .cover-logo {
+            font-size: 180px;
+            font-weight: 900;
+            letter-spacing: -5px;
+            background: linear-gradient(135deg, #00FF88 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .cover-title {
+            font-size: 32px;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .cover-version {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 60px;
+            page-break-inside: avoid;
+        }
+
+        .section.dark {
+            background: #0A0E27;
+            color: white;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: #00FF88;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .section.dark .section-description {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* Logo Section */
+        .logo-display {
+            background: white;
+            border: 3px solid #E8EBF0;
+            border-radius: 20px;
+            padding: 80px 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-display.dark-bg {
+            background: #0A0E27;
+            border-color: #1E2749;
+        }
+
+        .logo-main {
+            font-size: 120px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+
+        .logo-gradient {
+            background: linear-gradient(135deg, #00FF88 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-white {
+            color: white;
+        }
+
+        .logo-dark {
+            color: #0A0E27;
+        }
+
+        .logo-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .spec-box {
+            background: #F5F7FA;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid #00FF88;
+        }
+
+        .spec-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .spec-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: #0A0E27;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .color-block {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .color-swatch {
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-icon {
+            font-size: 64px;
+        }
+
+        .color-details {
+            background: white;
+            padding: 25px;
+        }
+
+        .color-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0A0E27;
+        }
+
+        .color-usage {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .color-codes {
+            display: grid;
+            gap: 8px;
+        }
+
+        .code-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #F5F7FA;
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+
+        .code-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+        }
+
+        .code-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0A0E27;
+        }
+
+        /* Typography */
+        .type-example {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin-bottom: 25px;
+        }
+
+        .type-display {
+            font-size: 96px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 15px;
+            letter-spacing: -3px;
+        }
+
+        .type-heading {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .type-subheading {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .type-body {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .font-spec-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        .font-spec-table th {
+            background: #0A0E27;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .font-spec-table td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #E8EBF0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+        }
+
+        .font-spec-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Spacing System */
+        .spacing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .spacing-block {
+            text-align: center;
+        }
+
+        .spacing-visual {
+            background: #00FF88;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .spacing-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0A0E27;
+            margin-bottom: 5px;
+        }
+
+        .spacing-value {
+            font-size: 11px;
+            color: #999;
+        }
+
+        /* Buttons */
+        .button-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .button-example {
+            text-align: center;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px 32px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background: #00FF88;
+            color: #0A0E27;
+        }
+
+        .btn-secondary {
+            background: #0A0E27;
+            color: white;
+        }
+
+        .btn-accent {
+            background: #FF3D71;
+            color: white;
+        }
+
+        .button-specs {
+            background: #F5F7FA;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .button-specs code {
+            font-family: 'JetBrains Mono', monospace;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #FF3D71;
+        }
+
+        /* Do's and Don'ts */
+        .dos-donts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .example-box {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .example-visual {
+            background: white;
+            padding: 50px;
+            text-align: center;
+            border-bottom: 3px solid;
+        }
+
+        .example-box.do .example-visual {
+            border-color: #00FF88;
+        }
+
+        .example-box.dont .example-visual {
+            border-color: #FF3D71;
+        }
+
+        .example-label {
+            padding: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .example-box.do .example-label {
+            background: #00FF88;
+            color: #0A0E27;
+        }
+
+        .example-box.dont .example-label {
+            background: #FF3D71;
+            color: white;
+        }
+
+        /* Icons & Symbols */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        .icon-box {
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Quick Reference */
+        .quick-ref {
+            background: #00FF88;
+            color: #0A0E27;
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .quick-ref-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        .quick-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .ref-item {
+            background: rgba(10, 14, 39, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .ref-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+
+        .ref-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        @media print {
+            .page { max-width: 100%; }
+            .section { page-break-inside: avoid; }
+            .cover { page-break-after: always; }
+        }
+
+        @media (max-width: 768px) {
+            .cover-logo { font-size: 80px; }
+            .section { padding: 40px 30px; }
+            .section-title { font-size: 36px; }
+            .grid-2, .grid-3, .color-grid, .spacing-grid, .button-showcase, .dos-donts, .icon-grid, .quick-ref-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Cover Page -->
+        <div class="cover">
+            <div class="cover-content">
+                <div class="cover-logo">SCORR</div>
+                <div class="cover-title">Brand Style Guide</div>
+                <div class="cover-version">Version 1.0 · February 2026</div>
+            </div>
+        </div>
+
+        <!-- 01. Logo -->
+        <div class="section">
+            <div class="section-number">01. LOGO</div>
+            <h2 class="section-title">Het Logo</h2>
+            <p class="section-description">
+                Het SCORR logo is krachtig, modern en direct herkenbaar. De dubbele-R geeft energie en snelheid — 
+                perfect voor een real-time sport platform. Gebruik altijd Lexend Black (900) voor maximale impact.
+            </p>
+
+            <div class="logo-display">
+                <div class="logo-main logo-gradient">SCORR</div>
+            </div>
+
+            <div class="logo-specs">
+                <div class="spec-box">
+                    <div class="spec-label">Font Family</div>
+                    <div class="spec-value">Lexend</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-label">Font Weight</div>
+                    <div class="spec-value">900 (Black)</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-label">Letter Spacing</div>
+                    <div class="spec-value">-2px to -3px</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-label">Text Transform</div>
+                    <div class="spec-value">UPPERCASE</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 28px; font-weight: 700; margin: 50px 0 30px;">Logo Variaties</h3>
+            
+            <div class="grid-2" style="margin-bottom: 30px;">
+                <div class="logo-display dark-bg">
+                    <div class="logo-main logo-white">SCORR</div>
+                </div>
+                <div class="logo-display" style="background: #00FF88;">
+                    <div class="logo-main logo-dark">SCORR</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 02. Colors -->
+        <div class="section dark">
+            <div class="section-number">02. KLEUREN</div>
+            <h2 class="section-title">Kleurenpalet</h2>
+            <p class="section-description">
+                Ons kleurenpalet combineert elektrisch groen voor live energie, diep navy voor professionaliteit, 
+                en hot pink voor die iconische doelpunten. Elke kleur heeft een duidelijk doel.
+            </p>
+
+            <div class="color-grid">
+                <!-- Electric Green -->
+                <div class="color-block">
+                    <div class="color-swatch" style="background: #00FF88;">
+                        <span class="color-icon">⚡</span>
+                    </div>
+                    <div class="color-details">
+                        <div class="color-name">Electric Green</div>
+                        <div class="color-usage">Primary brand color · Live indicators · Success states · Buttons</div>
+                        <div class="color-codes">
+                            <div class="code-row">
+                                <span class="code-label">HEX</span>
+                                <span class="code-value">#00FF88</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">RGB</span>
+                                <span class="code-value">0, 255, 136</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">CSS VAR</span>
+                                <span class="code-value">--scorr-electric</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deep Navy -->
+                <div class="color-block">
+                    <div class="color-swatch" style="background: #0A0E27;">
+                        <span class="color-icon" style="color: white;">🏆</span>
+                    </div>
+                    <div class="color-details">
+                        <div class="color-name">Deep Navy</div>
+                        <div class="color-usage">Primary dark · Backgrounds · Headers · Text · Professional touch</div>
+                        <div class="color-codes">
+                            <div class="code-row">
+                                <span class="code-label">HEX</span>
+                                <span class="code-value">#0A0E27</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">RGB</span>
+                                <span class="code-value">10, 14, 39</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">CSS VAR</span>
+                                <span class="code-value">--scorr-deep</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hot Pink -->
+                <div class="color-block">
+                    <div class="color-swatch" style="background: #FF3D71;">
+                        <span class="color-icon" style="color: white;">⚽</span>
+                    </div>
+                    <div class="color-details">
+                        <div class="color-name">Hot Pink</div>
+                        <div class="color-usage">Goals · Highlights · Energy accents · Call-to-actions</div>
+                        <div class="color-codes">
+                            <div class="code-row">
+                                <span class="code-label">HEX</span>
+                                <span class="code-value">#FF3D71</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">RGB</span>
+                                <span class="code-value">255, 61, 113</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">CSS VAR</span>
+                                <span class="code-value">--scorr-accent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slate -->
+                <div class="color-block">
+                    <div class="color-swatch" style="background: #1E2749;">
+                        <span class="color-icon" style="color: white;">📱</span>
+                    </div>
+                    <div class="color-details">
+                        <div class="color-name">Slate</div>
+                        <div class="color-usage">Secondary backgrounds · Cards · Subtle elements</div>
+                        <div class="color-codes">
+                            <div class="code-row">
+                                <span class="code-label">HEX</span>
+                                <span class="code-value">#1E2749</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">RGB</span>
+                                <span class="code-value">30, 39, 73</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">CSS VAR</span>
+                                <span class="code-value">--scorr-slate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warning Yellow -->
+                <div class="color-block">
+                    <div class="color-swatch" style="background: #FFB800;">
+                        <span class="color-icon">🟨</span>
+                    </div>
+                    <div class="color-details">
+                        <div class="color-name">Warning Yellow</div>
+                        <div class="color-usage">Yellow cards · Warnings · Caution states</div>
+                        <div class="color-codes">
+                            <div class="code-row">
+                                <span class="code-label">HEX</span>
+                                <span class="code-value">#FFB800</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">RGB</span>
+                                <span class="code-value">255, 184, 0</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">CSS VAR</span>
+                                <span class="code-value">--scorr-warning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud -->
+                <div class="color-block">
+                    <div class="color-swatch" style="background: #F5F7FA;">
+                        <span class="color-icon">☁️</span>
+                    </div>
+                    <div class="color-details">
+                        <div class="color-name">Cloud</div>
+                        <div class="color-usage">Page backgrounds · Light sections · Neutral spaces</div>
+                        <div class="color-codes">
+                            <div class="code-row">
+                                <span class="code-label">HEX</span>
+                                <span class="code-value">#F5F7FA</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">RGB</span>
+                                <span class="code-value">245, 247, 250</span>
+                            </div>
+                            <div class="code-row">
+                                <span class="code-label">CSS VAR</span>
+                                <span class="code-value">--scorr-cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 03. Typography -->
+        <div class="section">
+            <div class="section-number">03. TYPOGRAFIE</div>
+            <h2 class="section-title">Lettertype</h2>
+            <p class="section-description">
+                Lexend is speciaal ontworpen voor leesbaarheid en moderne interfaces. Ideaal voor scores die 
+                snel gescand moeten worden op kantine displays en mobiele apps.
+            </p>
+
+            <div class="type-example">
+                <div class="type-display" style="color: #0A0E27;">3-1</div>
+                <div class="type-heading" style="color: #0A0E27;">Live Score Update</div>
+                <div class="type-subheading" style="color: #0A0E27;">FC Purmerend vs Monnickendam</div>
+                <div class="type-body">
+                    De kracht van SCORR zit in real-time updates. Wanneer een scheidsrechter een doelpunt 
+                    registreert, verschijnt het binnen 2 seconden op elk scherm in de kantine.
+                </div>
+            </div>
+
+            <table class="font-spec-table">
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Weight</th>
+                        <th>Size</th>
+                        <th>Line Height</th>
+                        <th>Letter Spacing</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Display (Scores)</td>
+                        <td>900 Black</td>
+                        <td>72-120px</td>
+                        <td>1.0</td>
+                        <td>-2px to -3px</td>
+                    </tr>
+                    <tr>
+                        <td>H1 (Headers)</td>
+                        <td>700 Bold</td>
+                        <td>48-64px</td>
+                        <td>1.1</td>
+                        <td>-1px</td>
+                    </tr>
+                    <tr>
+                        <td>H2 (Subheaders)</td>
+                        <td>600 Semibold</td>
+                        <td>32-40px</td>
+                        <td>1.2</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Body Text</td>
+                        <td>400 Regular</td>
+                        <td>16-18px</td>
+                        <td>1.6-1.8</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Buttons</td>
+                        <td>700 Bold</td>
+                        <td>14-16px</td>
+                        <td>1.0</td>
+                        <td>1px</td>
+                    </tr>
+                    <tr>
+                        <td>Captions</td>
+                        <td>300 Light</td>
+                        <td>12-14px</td>
+                        <td>1.4</td>
+                        <td>0.5px</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 40px; background: #F5F7FA; padding: 25px; border-radius: 12px; border-left: 4px solid #00FF88;">
+                <div style="font-weight: 700; margin-bottom: 10px; color: #0A0E27;">📦 Font Import</div>
+                <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #666;">
+                    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;900&display=swap');
+                </code>
+            </div>
+        </div>
+
+        <!-- 04. Spacing -->
+        <div class="section" style="background: #F5F7FA;">
+            <div class="section-number">04. SPACING</div>
+            <h2 class="section-title">Ruimte & Spacing</h2>
+            <p class="section-description">
+                Consistent spacing zorgt voor visuele harmonie. Gebruik altijd veelvouden van 8px voor margins, 
+                padding en gaps tussen elementen.
+            </p>
+
+            <div class="spacing-grid">
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 8px;"></div>
+                    <div class="spacing-label">XS</div>
+                    <div class="spacing-value">8px</div>
+                </div>
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 16px;"></div>
+                    <div class="spacing-label">SM</div>
+                    <div class="spacing-value">16px</div>
+                </div>
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 24px;"></div>
+                    <div class="spacing-label">MD</div>
+                    <div class="spacing-value">24px</div>
+                </div>
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 32px;"></div>
+                    <div class="spacing-label">LG</div>
+                    <div class="spacing-value">32px</div>
+                </div>
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 48px;"></div>
+                    <div class="spacing-label">XL</div>
+                    <div class="spacing-value">48px</div>
+                </div>
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 64px;"></div>
+                    <div class="spacing-label">2XL</div>
+                    <div class="spacing-value">64px</div>
+                </div>
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 80px;"></div>
+                    <div class="spacing-label">3XL</div>
+                    <div class="spacing-value">80px</div>
+                </div>
+                <div class="spacing-block">
+                    <div class="spacing-visual" style="height: 96px;"></div>
+                    <div class="spacing-label">4XL</div>
+                    <div class="spacing-value">96px</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 05. Buttons -->
+        <div class="section">
+            <div class="section-number">05. BUTTONS</div>
+            <h2 class="section-title">Knoppen</h2>
+            <p class="section-description">
+                Buttons moeten direct actie uitstralen. Gebruik duidelijke kleuren, uppercase tekst en voldoende padding 
+                voor touch-vriendelijkheid op mobiel.
+            </p>
+
+            <div class="button-showcase">
+                <div class="button-example">
+                    <button class="btn btn-primary">Start Wedstrijd</button>
+                    <div class="button-specs">
+                        <strong>Primary Button</strong><br>
+                        Background: <code>#00FF88</code><br>
+                        Text: <code>#0A0E27</code><br>
+                        Padding: <code>18px 32px</code><br>
+                        Border-radius: <code>12px</code>
+                    </div>
+                </div>
+
+                <div class="button-example">
+                    <button class="btn btn-secondary">Pauze</button>
+                    <div class="button-specs">
+                        <strong>Secondary Button</strong><br>
+                        Background: <code>#0A0E27</code><br>
+                        Text: <code>#FFFFFF</code><br>
+                        Padding: <code>18px 32px</code><br>
+                        Border-radius: <code>12px</code>
+                    </div>
+                </div>
+
+                <div class="button-example">
+                    <button class="btn btn-accent">Doelpunt!</button>
+                    <div class="button-specs">
+                        <strong>Accent Button</strong><br>
+                        Background: <code>#FF3D71</code><br>
+                        Text: <code>#FFFFFF</code><br>
+                        Padding: <code>18px 32px</code><br>
+                        Border-radius: <code>12px</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 06. Icons -->
+        <div class="section dark">
+            <div class="section-number">06. ICONS & SYMBOLEN</div>
+            <h2 class="section-title">Iconen</h2>
+            <p class="section-description">
+                Gebruik emoji's voor directe herkenning. Ze zijn universeel, schalen perfect en voegen persoonlijkheid toe.
+            </p>
+
+            <div class="icon-grid">
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">⚽</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">🟨</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">🟥</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">⏱️</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">📊</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">🏆</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">📱</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">📺</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">⚡</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">🎯</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">👥</div>
+                <div class="icon-box" style="background: rgba(255,255,255,0.1);">📄</div>
+            </div>
+        </div>
+
+        <!-- 07. Do's and Don'ts -->
+        <div class="section">
+            <div class="section-number">07. DO'S & DON'TS</div>
+            <h2 class="section-title">Gebruik Richtlijnen</h2>
+            <p class="section-description">
+                Bescherm de integriteit van het SCORR merk door deze richtlijnen te volgen.
+            </p>
+
+            <div class="dos-donts">
+                <div class="example-box do">
+                    <div class="example-visual">
+                        <div style="font-size: 64px; font-weight: 900; background: linear-gradient(135deg, #00FF88, #00DDFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SCORR</div>
+                    </div>
+                    <div class="example-label">✓ DO: Gebruik de gradient voor impact</div>
+                </div>
+
+                <div class="example-box dont">
+                    <div class="example-visual">
+                        <div style="font-size: 64px; font-weight: 300; color: #999;">scorr</div>
+                    </div>
+                    <div class="example-label">✗ DON'T: Gebruik geen lowercase of light weights</div>
+                </div>
+
+                <div class="example-box do">
+                    <div class="example-visual">
+                        <div style="padding: 30px; background: #0A0E27; border-radius: 12px; display: inline-block;">
+                            <div style="font-size: 48px; font-weight: 900; color: white;">SCORR</div>
+                        </div>
+                    </div>
+                    <div class="example-label">✓ DO: Geef het logo ruimte om te ademen</div>
+                </div>
+
+                <div class="example-box dont">
+                    <div class="example-visual">
+                        <div style="font-size: 64px; font-weight: 900; color: #00FF88; transform: rotate(-15deg);">SCORR</div>
+                    </div>
+                    <div class="example-label">✗ DON'T: Roteer of vervormt het logo niet</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Reference -->
+        <div class="section" style="background: #F5F7FA;">
+            <div class="quick-ref">
+                <div class="quick-ref-title">⚡ Quick Reference</div>
+                <div class="quick-ref-grid">
+                    <div class="ref-item">
+                        <div class="ref-label">Primary Font</div>
+                        <div class="ref-value">Lexend (Google Fonts)</div>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-label">Brand Colors</div>
+                        <div class="ref-value">#00FF88 · #0A0E27 · #FF3D71</div>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-label">Border Radius</div>
+                        <div class="ref-value">8px / 12px / 16px / 20px</div>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-label">Spacing Unit</div>
+                        <div class="ref-value">8px base (multiples of 8)</div>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-label">Button Heights</div>
+                        <div class="ref-value">48px / 56px / 64px</div>
+                    </div>
+                    <div class="ref-item">
+                        <div class="ref-label">Max Container Width</div>
+                        <div class="ref-value">1200px - 1400px</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="section dark" style="text-align: center; padding: 60px;">
+            <div style="font-size: 72px; font-weight: 900; background: linear-gradient(135deg, #00FF88, #00DDFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;">SCORR</div>
+            <div style="font-size: 18px; color: rgba(255,255,255,0.6);">
+                Live Scores. Real Football. Built for Amateur Clubs.
+            </div>
+            <div style="margin-top: 30px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: rgba(255,255,255,0.4);">
+                Version 1.0 · February 2026 · scorr.app
+            </div>
+        </div>
+    </div>
+</body>
+</html>

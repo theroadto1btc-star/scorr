@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCORR - Brand Identity Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* SCORR Primary Colors */
+            --scorr-electric: #00FF88;      /* Electric Green - Live/Active */
+            --scorr-deep: #0A0E27;          /* Deep Navy - Professional */
+            --scorr-slate: #1E2749;         /* Slate - Secondary */
+            --scorr-accent: #FF3D71;        /* Hot Pink - Energy/Goals */
+            --scorr-cloud: #F5F7FA;         /* Cloud - Backgrounds */
+            
+            /* Supporting Colors */
+            --scorr-electric-dim: #00CC6A;
+            --scorr-warning: #FFB800;
+            --scorr-success: #00FF88;
+            --scorr-card: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: var(--scorr-cloud);
+            color: var(--scorr-deep);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--scorr-deep) 0%, var(--scorr-slate) 100%);
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 61, 113, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-showcase {
+            margin-bottom: 40px;
+        }
+
+        .logo-large {
+            font-size: 120px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Lexend', sans-serif;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 28px;
+            color: var(--scorr-cloud);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 60px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--scorr-deep);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 800px;
+        }
+
+        /* Logo Variations */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .logo-card {
+            background: var(--scorr-card);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .logo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo-card.dark {
+            background: var(--scorr-deep);
+        }
+
+        .logo-card.electric {
+            background: var(--scorr-electric);
+        }
+
+        .logo-text {
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            font-family: 'Lexend', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .logo-text.primary {
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-text.white {
+            color: white;
+        }
+
+        .logo-text.dark {
+            color: var(--scorr-deep);
+        }
+
+        .logo-label {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+        }
+
+        .logo-card.dark .logo-label {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .color-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .color-swatch {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .color-info {
+            background: white;
+            padding: 20px;
+        }
+
+        .color-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--scorr-deep);
+        }
+
+        .color-use {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .color-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--scorr-deep);
+            background: var(--scorr-cloud);
+            padding: 6px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* Typography */
+        .type-specimen {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .type-display {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--scorr-deep);
+        }
+
+        .type-heading {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--scorr-deep);
+        }
+
+        .type-body {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+        }
+
+        .type-meta {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--scorr-cloud);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* UI Components Preview */
+        .ui-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .component-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-scorr {
+            background: var(--scorr-electric);
+            color: var(--scorr-deep);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Lexend', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-scorr:hover {
+            background: var(--scorr-electric-dim);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-scorr.secondary {
+            background: var(--scorr-deep);
+            color: white;
+        }
+
+        .btn-scorr.secondary:hover {
+            background: var(--scorr-slate);
+            box-shadow: 0 6px 20px rgba(10, 14, 39, 0.3);
+        }
+
+        .btn-scorr.accent {
+            background: var(--scorr-accent);
+            color: white;
+        }
+
+        .btn-scorr.accent:hover {
+            background: #ff1f5a;
+            box-shadow: 0 6px 20px rgba(255, 61, 113, 0.3);
+        }
+
+        .score-display {
+            background: var(--scorr-deep);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .score-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--scorr-electric);
+            font-family: 'Lexend', sans-serif;
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Use Cases */
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .use-case {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            border-left: 5px solid var(--scorr-electric);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .use-case-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .use-case-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 12px;
+        }
+
+        .use-case-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Brand Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .value-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .value-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 12px;
+        }
+
+        .value-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--scorr-deep);
+            color: white;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 30px;
+            }
+
+            .logo-large {
+                font-size: 72px;
+            }
+
+            .section {
+                padding: 50px 30px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .type-display {
+                font-size: 48px;
+            }
+
+            .type-heading {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="logo-showcase">
+                    <div class="logo-large">SCORR</div>
+                </div>
+                <div class="tagline">Live Scores. Real Football.</div>
+                <div class="subtitle">
+                    Modern live score platform voor amateurvoetbal — van scheidsrechter naar kantine in real-time
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand Concept -->
+        <div class="section">
+            <h2 class="section-title">Het Concept</h2>
+            <p class="section-description">
+                SCORR is gebouwd voor het echte voetbal. Geen bureaucratie, geen ingewikkelde systemen — gewoon live scores 
+                die van het veld naar de kantine gaan. Scheidsrechters en coaches kunnen met één tik een doelpunt registreren, 
+                terwijl supporters in de kantine live meekijken. Modern, snel, betrouwbaar.
+            </p>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">⚡</span>
+                    <div class="value-name">Real-time</div>
+                    <div class="value-desc">Geen vertraging. Elke actie direct zichtbaar in de kantine.</div>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🎯</span>
+                    <div class="value-name">Simpel</div>
+                    <div class="value-desc">Zo makkelijk dat elke scheidsrechter het binnen 2 minuten snapt.</div>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🏆</span>
+                    <div class="value-name">Professioneel</div>
+                    <div class="value-desc">Amateurvoetbal verdient dezelfde ervaring als de Eredivisie.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Variations -->
+        <div class="section" style="background: white;">
+            <h2 class="section-title">Logo Variaties</h2>
+            <p class="section-description">
+                Het SCORR logo is krachtig en flexibel. De dubbel-R geeft energie en snelheid — perfect voor live sport.
+            </p>
+
+            <div class="logo-grid">
+                <div class="logo-card">
+                    <div class="logo-text primary">SCORR</div>
+                    <div class="logo-label" style="color: var(--scorr-deep);">Primary Gradient</div>
+                </div>
+
+                <div class="logo-card dark">
+                    <div class="logo-text white">SCORR</div>
+                    <div class="logo-label">White on Dark</div>
+                </div>
+
+                <div class="logo-card electric">
+                    <div class="logo-text dark">SCORR</div>
+                    <div class="logo-label" style="color: var(--scorr-deep);">Dark on Electric</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="section">
+            <h2 class="section-title">Kleuren</h2>
+            <p class="section-description">
+                Elektrisch groen voor live energie, diep navy voor betrouwbaarheid, hot pink voor die iconische goals.
+            </p>
+
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: var(--scorr-electric);">⚡</div>
+                    <div class="color-info">
+                        <div class="color-name">Electric Green</div>
+                        <div class="color-use">Primary · Live indicators · Succes states</div>
+                        <div class="color-code">#00FF88</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: var(--scorr-deep); color: white;">🏆</div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Navy</div>
+                        <div class="color-use">Backgrounds · Headers · Professional touch</div>
+                        <div class="color-code">#0A0E27</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: var(--scorr-accent); color: white;">⚽</div>
+                    <div class="color-info">
+                        <div class="color-name">Hot Pink</div>
+                        <div class="color-use">Goals · Highlights · Energy accents</div>
+                        <div class="color-code">#FF3D71</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: var(--scorr-slate); color: white;">📱</div>
+                    <div class="color-info">
+                        <div class="color-name">Slate</div>
+                        <div class="color-use">Secondary · Cards · Subtle backgrounds</div>
+                        <div class="color-code">#1E2749</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: var(--scorr-warning);">🟨</div>
+                    <div class="color-info">
+                        <div class="color-name">Warning Yellow</div>
+                        <div class="color-use">Yellow cards · Warnings · Alerts</div>
+                        <div class="color-code">#FFB800</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: var(--scorr-cloud);">☁️</div>
+                    <div class="color-info">
+                        <div class="color-name">Cloud</div>
+                        <div class="color-use">Page backgrounds · Neutral spaces</div>
+                        <div class="color-code">#F5F7FA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section" style="background: white;">
+            <h2 class="section-title">Typografie</h2>
+            <p class="section-description">
+                Lexend — modern, leesbaar, energiek. Perfect voor scores die snel gescand moeten worden.
+            </p>
+
+            <div class="type-specimen">
+                <div class="type-display">SCORR 3-1</div>
+                <div class="type-heading">Live vanaf het veld</div>
+                <div class="type-body">
+                    Elke seconde telt. Wanneer de scheidsrechter fluit voor een doelpunt, zie je het binnen 2 seconden 
+                    in de kantine verschijnen. Dat is de kracht van SCORR — real-time voetbal voor iedereen.
+                </div>
+                <div class="type-meta">
+                    Font: Lexend (Google Fonts) · Weights: 300 Light, 400 Regular, 700 Bold, 900 Black
+                </div>
+            </div>
+        </div>
+
+        <!-- UI Components -->
+        <div class="section">
+            <h2 class="section-title">UI Componenten</h2>
+            <p class="section-description">
+                Krachtig, duidelijk, direct — elk element is ontworpen voor snelheid en leesbaarheid.
+            </p>
+
+            <div class="ui-preview">
+                <div class="component-card">
+                    <h3 style="margin-bottom: 20px; color: var(--scorr-deep);">Buttons</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <button class="btn-scorr">Start Wedstrijd</button>
+                        <button class="btn-scorr secondary">Pauze</button>
+                        <button class="btn-scorr accent">Doelpunt!</button>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 style="margin-bottom: 20px; color: var(--scorr-deep);">Score Display</h3>
+                    <div class="score-display">
+                        <div class="score-number">4 - 2</div>
+                        <div class="score-label">Live Score</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Cases -->
+        <div class="section" style="background: white;">
+            <h2 class="section-title">Toepassingen</h2>
+            <p class="section-description">
+                Van scheidsrechter app tot kantine display — één platform voor alle live scores.
+            </p>
+
+            <div class="use-case-grid">
+                <div class="use-case">
+                    <div class="use-case-icon">📱</div>
+                    <div class="use-case-title">Scheidsrechter App</div>
+                    <div class="use-case-desc">
+                        Simpele mobiele app voor scheidsrechters en coaches om live scores, kaarten en events te registreren.
+                    </div>
+                </div>
+
+                <div class="use-case">
+                    <div class="use-case-icon">📺</div>
+                    <div class="use-case-title">Kantine Display</div>
+                    <div class="use-case-desc">
+                        Groot scherm in de kantine toont alle wedstrijden van de club live — inclusief uitwedstrijden.
+                    </div>
+                </div>
+
+                <div class="use-case">
+                    <div class="use-case-icon">🌐</div>
+                    <div class="use-case-title">Website Widget</div>
+                    <div class="use-case-desc">
+                        Integreer live scores direct op de clubwebsite — automatisch bijgewerkt vanaf het veld.
+                    </div>
+                </div>
+
+                <div class="use-case">
+                    <div class="use-case-icon">📊</div>
+                    <div class="use-case-title">Statistieken</div>
+                    <div class="use-case-desc">
+                        Automatische topscorers lijsten, kaarten overzichten en seizoen statistieken per club.
+                    </div>
+                </div>
+
+                <div class="use-case">
+                    <div class="use-case-icon">🏆</div>
+                    <div class="use-case-title">Competitie Tracking</div>
+                    <div class="use-case-desc">
+                        Volg live hoe concurrenten presteren — perfect voor spannende competitie eindstanden.
+                    </div>
+                </div>
+
+                <div class="use-case">
+                    <div class="use-case-icon">📄</div>
+                    <div class="use-case-title">PDF Verslagen</div>
+                    <div class="use-case-desc">
+                        Professionele wedstrijdverslagen direct delen in de WhatsApp groep met ouders.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">SCORR</div>
+            <div class="footer-text">
+                Live Scores. Real Football. Built for Amateur Clubs.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
