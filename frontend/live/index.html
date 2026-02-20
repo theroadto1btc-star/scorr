@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SCORR - Live Wedstrijd</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --scorr-electric: #00FF88;
+            --scorr-deep: #0A0E27;
+            --scorr-slate: #1E2749;
+            --scorr-accent: #FF3D71;
+            --scorr-cloud: #F5F7FA;
+            --scorr-warning: #FFB800;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lexend', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--scorr-deep) 0%, var(--scorr-slate) 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0,0,0,0.4);
+        }
+
+        /* SCORR Header */
+        .scorr-header {
+            background: linear-gradient(135deg, var(--scorr-deep) 0%, var(--scorr-slate) 100%);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid var(--scorr-electric);
+        }
+
+        .scorr-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(0, 255, 136, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .scorr-header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .scorr-logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .scorr-tagline {
+            font-size: 10px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--scorr-accent);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 20px;
+        }
+
+        /* Match Info */
+        .match-info {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .match-title {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--scorr-slate);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .teams-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .team {
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 15px;
+        }
+
+        .score-display {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--scorr-deep);
+            line-height: 1;
+        }
+
+        .vs {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--scorr-slate);
+            opacity: 0.3;
+        }
+
+        /* Timer Section */
+        .timer-section {
+            background: linear-gradient(135deg, var(--scorr-deep) 0%, var(--scorr-slate) 100%);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(10, 14, 39, 0.2);
+            border: 2px solid var(--scorr-electric);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(0, 255, 136, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .timer-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .half-indicator {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--scorr-electric);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .timer-display {
+            font-size: 56px;
+            font-weight: 900;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 4px;
+            color: var(--scorr-electric);
+            text-shadow: 0 4px 16px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Timeline */
+        .timeline-section {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .timeline-header {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--scorr-electric);
+        }
+
+        .timeline-item {
+            padding: 14px;
+            margin-bottom: 10px;
+            background: var(--scorr-cloud);
+            border-radius: 10px;
+            border-left: 4px solid var(--scorr-electric);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-item.goal {
+            border-left-color: var(--scorr-electric);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .timeline-item.yellow {
+            border-left-color: var(--scorr-warning);
+            background: rgba(255, 184, 0, 0.05);
+        }
+
+        .timeline-item.red {
+            border-left-color: var(--scorr-accent);
+            background: rgba(255, 61, 113, 0.05);
+        }
+
+        .timeline-time {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            min-width: 35px;
+        }
+
+        .timeline-icon {
+            font-size: 24px;
+        }
+
+        .timeline-desc {
+            flex: 1;
+            font-size: 14px;
+            color: var(--scorr-slate);
+            font-weight: 500;
+        }
+
+        .timeline-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(10, 14, 39, 0.3);
+            font-size: 14px;
+        }
+
+        /* Notification Permission */
+        .notification-prompt {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .notification-prompt.hidden {
+            display: none;
+        }
+
+        .notification-icon {
+            font-size: 32px;
+        }
+
+        .notification-text {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--scorr-deep);
+            margin-bottom: 4px;
+        }
+
+        .notification-desc {
+            font-size: 12px;
+            color: var(--scorr-slate);
+        }
+
+        .notification-btn {
+            background: var(--scorr-electric);
+            color: var(--scorr-deep);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .notification-btn:active {
+            background: #00DD77;
+        }
+
+        /* Refresh Indicator */
+        .refresh-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--scorr-electric);
+            color: var(--scorr-deep);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .refresh-indicator.active {
+            opacity: 1;
+        }
+
+        .refresh-spinner {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--scorr-deep);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: rgba(10, 14, 39, 0.5);
+            font-size: 12px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--scorr-electric) 0%, #00DDFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- SCORR Header -->
+        <div class="scorr-header">
+            <div class="scorr-logo">SCORR</div>
+            <div class="scorr-tagline">Live Scores. Real Football.</div>
+            <div class="live-badge">
+                <div class="live-dot"></div>
+                LIVE
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Notification Permission Prompt -->
+            <div class="notification-prompt" id="notificationPrompt">
+                <div class="notification-icon">🔔</div>
+                <div class="notification-text">
+                    <div class="notification-title">Mis geen doelpunt!</div>
+                    <div class="notification-desc">Ontvang notificaties bij doelpunten en kaarten</div>
+                </div>
+                <button class="notification-btn" onclick="requestNotifications()">Aanzetten</button>
+            </div>
+
+            <!-- Match Info -->
+            <div class="match-info">
+                <div class="match-title">OEFENWEDSTRIJD</div>
+                
+                <div class="teams-container">
+                    <div class="team">
+                        <div class="team-name" id="homeTeam">FC Purmerend</div>
+                        <div class="score-display" id="homeScore">2</div>
+                    </div>
+
+                    <div class="vs">VS</div>
+
+                    <div class="team">
+                        <div class="team-name" id="awayTeam">VV Monnickendam</div>
+                        <div class="score-display" id="awayScore">1</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timer -->
+            <div class="timer-section">
+                <div class="half-indicator" id="halfIndicator">1e Helft</div>
+                <div class="timer-display" id="timerDisplay">23:45</div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-section">
+                <div class="timeline-header">📋 Wedstrijdverloop</div>
+                <div id="timeline">
+                    <div class="timeline-item goal">
+                        <div class="timeline-time">23'</div>
+                        <div class="timeline-icon">⚽</div>
+                        <div class="timeline-desc">DOELPUNT! FC Purmerend - Speler #9</div>
+                    </div>
+                    <div class="timeline-item yellow">
+                        <div class="timeline-time">18'</div>
+                        <div class="timeline-icon">🟨</div>
+                        <div class="timeline-desc">Gele kaart voor VV Monnickendam - Speler #5</div>
+                    </div>
+                    <div class="timeline-item goal">
+                        <div class="timeline-time">15'</div>
+                        <div class="timeline-icon">⚽</div>
+                        <div class="timeline-desc">DOELPUNT! VV Monnickendam - Speler #11</div>
+                    </div>
+                    <div class="timeline-item goal">
+                        <div class="timeline-time">7'</div>
+                        <div class="timeline-icon">⚽</div>
+                        <div class="timeline-desc">DOELPUNT! FC Purmerend - Speler #10</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-logo">SCORR</div>
+                <div>Powered by SCORR Live</div>
+            </div>
+        </div>
+
+        <!-- Refresh Indicator -->
+        <div class="refresh-indicator" id="refreshIndicator">
+            <div class="refresh-spinner"></div>
+            Updating...
+        </div>
+    </div>
+
+    <script>
+        console.log('🚀 SCORR Live View loaded');
+
+        let notificationsEnabled = false;
+
+        // Check if notifications are already granted
+        if ('Notification' in window && Notification.permission === 'granted') {
+            notificationsEnabled = true;
+            document.getElementById('notificationPrompt').classList.add('hidden');
+        } else if ('Notification' in window && Notification.permission === 'denied') {
+            document.getElementById('notificationPrompt').classList.add('hidden');
+        }
+
+        // Request notification permission
+        async function requestNotifications() {
+            if (!('Notification' in window)) {
+                alert('❌ Je browser ondersteunt geen notificaties');
+                return;
+            }
+
+            try {
+                const permission = await Notification.requestPermission();
+                
+                if (permission === 'granted') {
+                    notificationsEnabled = true;
+                    document.getElementById('notificationPrompt').classList.add('hidden');
+                    
+                    // Show test notification
+                    new Notification('🔔 SCORR Notificaties', {
+                        body: 'Je ontvangt nu updates bij doelpunten en kaarten!',
+                        icon: '⚽',
+                        badge: '⚽'
+                    });
+                    
+                    console.log('✅ Notifications enabled');
+                } else {
+                    alert('❌ Notificaties geweigerd. Je kunt dit later wijzigen in je browser instellingen.');
+                }
+            } catch (error) {
+                console.error('Notification error:', error);
+            }
+        }
+
+        // Send notification
+        function sendNotification(title, body, icon = '⚽') {
+            if (!notificationsEnabled || Notification.permission !== 'granted') {
+                return;
+            }
+
+            try {
+                const notification = new Notification(title, {
+                    body: body,
+                    icon: icon,
+                    badge: '⚽',
+                    vibrate: [200, 100, 200]
+                });
+
+                // Auto-close after 5 seconds
+                setTimeout(() => notification.close(), 5000);
+                
+                console.log('📢 Notification sent:', title);
+            } catch (error) {
+                console.error('Notification error:', error);
+            }
+        }
+
+        // Simulate live updates (in production, this would be real-time from Firebase/Supabase)
+        function simulateLiveUpdate() {
+            const refreshIndicator = document.getElementById('refreshIndicator');
+            
+            // Show refresh indicator
+            refreshIndicator.classList.add('active');
+            
+            // Simulate data fetch
+            setTimeout(() => {
+                refreshIndicator.classList.remove('active');
+                console.log('🔄 Data refreshed');
+            }, 1000);
+        }
+
+        // Auto-refresh every 10 seconds
+        setInterval(simulateLiveUpdate, 10000);
+
+        // Example: Simulate a new goal after 5 seconds (for demo)
+        setTimeout(() => {
+            // Add new timeline item
+            const timeline = document.getElementById('timeline');
+            const newItem = document.createElement('div');
+            newItem.className = 'timeline-item goal';
+            newItem.innerHTML = `
+                <div class="timeline-time">28'</div>
+                <div class="timeline-icon">⚽</div>
+                <div class="timeline-desc">DOELPUNT! FC Purmerend - Speler #7</div>
+            `;
+            timeline.insertBefore(newItem, timeline.firstChild);
+            
+            // Update score
+            document.getElementById('homeScore').textContent = '3';
+            
+            // Send notification
+            sendNotification(
+                '⚽ DOELPUNT!',
+                'FC Purmerend - Speler #7 (28\')',
+                '⚽'
+            );
+            
+            // Vibrate if supported
+            if ('vibrate' in navigator) {
+                navigator.vibrate([200, 100, 200]);
+            }
+        }, 5000);
+
+        console.log('✅ Live view ready - Demo mode active');
+    </script>
+</body>
+</html>
