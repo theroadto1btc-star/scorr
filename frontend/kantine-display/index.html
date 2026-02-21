@@ -29,7 +29,6 @@
             color: white;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, var(--scorr-deep) 0%, var(--scorr-slate) 100%);
             padding: 32px 40px;
@@ -56,12 +55,7 @@
             justify-content: center;
             overflow: hidden;
             padding: 4px;
-        }
-
-        .club-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            font-size: 32px;
         }
 
         .header-title {
@@ -94,14 +88,12 @@
             background-clip: text;
         }
 
-        /* Container */
         .container {
             max-width: 1600px;
             margin: 0 auto;
             padding: 40px;
         }
 
-        /* Competition Section */
         .competition-section {
             margin-bottom: 48px;
         }
@@ -116,9 +108,7 @@
             margin-bottom: 16px;
         }
 
-        .competition-icon {
-            font-size: 32px;
-        }
+        .competition-icon { font-size: 32px; }
 
         .competition-name {
             font-size: 24px;
@@ -133,7 +123,6 @@
             font-weight: 600;
         }
 
-        /* Match Card */
         .match-card {
             background: var(--scorr-slate);
             border-radius: 16px;
@@ -151,12 +140,6 @@
             background: linear-gradient(135deg, var(--scorr-slate) 0%, rgba(0, 255, 136, 0.05) 100%);
         }
 
-        .match-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Match Status */
         .match-status {
             display: flex;
             flex-direction: column;
@@ -202,7 +185,6 @@
             color: var(--scorr-deep);
         }
 
-        /* Teams Container */
         .teams-container {
             flex: 1;
             display: flex;
@@ -217,9 +199,7 @@
             gap: 16px;
         }
 
-        .team.away {
-            flex-direction: row-reverse;
-        }
+        .team.away { flex-direction: row-reverse; }
 
         .team-logo {
             width: 56px;
@@ -234,23 +214,14 @@
             padding: 3px;
         }
 
-        .team-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
         .team-name {
             font-size: 22px;
             font-weight: 600;
             color: white;
         }
 
-        .team.away .team-name {
-            text-align: right;
-        }
+        .team.away .team-name { text-align: right; }
 
-        /* Score */
         .score-container {
             display: flex;
             align-items: center;
@@ -272,37 +243,6 @@
             color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Live Indicator */
-        .live-indicator {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            background: var(--scorr-accent);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            animation: blink 1.5s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* Footer */
         .footer {
             text-align: center;
             padding: 40px;
@@ -327,63 +267,12 @@
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
         }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .match-card {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .teams-container {
-                flex-direction: column;
-                width: 100%;
-                gap: 16px;
-            }
-
-            .team {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .team.away {
-                flex-direction: row;
-            }
-
-            .team.away .team-name {
-                text-align: left;
-            }
-
-            .score-container {
-                order: -1;
-            }
-        }
-
-        /* No matches state */
-        .no-matches {
-            text-align: center;
-            padding: 80px 40px;
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .no-matches-icon {
-            font-size: 80px;
-            margin-bottom: 24px;
-        }
-
-        .no-matches-text {
-            font-size: 24px;
-            font-weight: 600;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-left">
-            <div class="club-logo">
-                <img src="../assets/logos/logo_fcpurmerend_nieuw.png" alt="FC Purmerend">
-            </div>
+            <div class="club-logo">⚽</div>
             <div class="header-title">
                 <div class="club-name">FC Purmerend</div>
                 <div class="header-subtitle">Live Wedstrijden</div>
@@ -392,9 +281,7 @@
         <div class="scorr-logo">SCORR</div>
     </div>
 
-    <!-- Main Container -->
     <div class="container">
-        <!-- Competition Section: FC Purmerend Wedstrijden -->
         <div class="competition-section">
             <div class="competition-header">
                 <div class="competition-icon">⚽</div>
@@ -402,150 +289,135 @@
                 <div class="match-count">5 wedstrijden</div>
             </div>
 
-            <!-- Live Match - FC Purmerend 1 -->
+            <!-- LIVE: O14-1 -->
             <div class="match-card live">
                 <div class="match-status">
-                    <div class="match-time live">67'</div>
+                    <div class="match-time live" id="time1">67'</div>
                     <div class="status-badge">LIVE</div>
                 </div>
-
                 <div class="teams-container">
                     <div class="team home">
-                        <div class="team-logo">
-                            <img src="../assets/logos/logo_fcpurmerend_nieuw.png" alt="FC Purmerend 1">
+                        <div class="team-logo" style="background:#003399;">
+                            <span style="color:white;font-weight:900;font-size:16px;">FCP</span>
                         </div>
                         <div class="team-name">FC Purmerend O14-1</div>
                     </div>
-
                     <div class="score-container">
                         <div class="score">2</div>
                         <div class="score-separator">-</div>
                         <div class="score">1</div>
                     </div>
-
                     <div class="team away">
-                        <div class="team-logo">
-                            <img src="../assets/logos/logo-512-512.png" alt="VV Monnickendam">
+                        <div class="team-logo" style="background:#009900;">
+                            <span style="color:white;font-weight:900;font-size:14px;">VVM</span>
                         </div>
                         <div class="team-name">VV Monnickendam O14-1</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Live Match - FC Purmerend O19-1 -->
+            <!-- LIVE: O19-1 -->
             <div class="match-card live">
                 <div class="match-status">
-                    <div class="match-time live">42'</div>
+                    <div class="match-time live" id="time2">42'</div>
                     <div class="status-badge">LIVE</div>
                 </div>
-
                 <div class="teams-container">
                     <div class="team home">
-                        <div class="team-logo">
-                            <img src="../assets/logos/logo_fcpurmerend_nieuw.png" alt="FC Purmerend O19-1">
+                        <div class="team-logo" style="background:#003399;">
+                            <span style="color:white;font-weight:900;font-size:16px;">FCP</span>
                         </div>
                         <div class="team-name">FC Purmerend O19-1</div>
                     </div>
-
                     <div class="score-container">
                         <div class="score">0</div>
                         <div class="score-separator">-</div>
                         <div class="score">0</div>
                     </div>
-
                     <div class="team away">
-                        <div class="team-logo">
-                            <div style="width: 100%; height: 100%; background: #0066cc; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 20px;">ZOB</div>
+                        <div class="team-logo" style="background:#0066cc;">
+                            <span style="color:white;font-weight:900;font-size:20px;">ZOB</span>
                         </div>
                         <div class="team-name">ZOB O19-1</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Finished Match - FC Purmerend 2 (Away) -->
+            <!-- FINISHED -->
             <div class="match-card">
                 <div class="match-status">
                     <div class="match-time">AFG</div>
                     <div class="status-badge finished">Afgelopen</div>
                 </div>
-
                 <div class="teams-container">
                     <div class="team home">
-                        <div class="team-logo">
-                            <div style="width: 100%; height: 100%; background: #cc0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 20px;">AFC</div>
+                        <div class="team-logo" style="background:#cc0000;">
+                            <span style="color:white;font-weight:900;font-size:20px;">AFC</span>
                         </div>
                         <div class="team-name">AFC Amsterdam O13-2</div>
                     </div>
-
                     <div class="score-container">
                         <div class="score">1</div>
                         <div class="score-separator">-</div>
                         <div class="score">3</div>
                     </div>
-
                     <div class="team away">
-                        <div class="team-logo">
-                            <img src="../assets/logos/logo_fcpurmerend_nieuw.png" alt="FC Purmerend 2">
+                        <div class="team-logo" style="background:#003399;">
+                            <span style="color:white;font-weight:900;font-size:16px;">FCP</span>
                         </div>
                         <div class="team-name">FC Purmerend O13-1</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Live Match - FC Purmerend O17-1 -->
+            <!-- LIVE: O17-1 -->
             <div class="match-card live">
                 <div class="match-status">
-                    <div class="match-time live">78'</div>
+                    <div class="match-time live" id="time3">78'</div>
                     <div class="status-badge">LIVE</div>
                 </div>
-
                 <div class="teams-container">
                     <div class="team home">
-                        <div class="team-logo">
-                            <div style="width: 100%; height: 100%; background: #00aa00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 18px;">EVC</div>
+                        <div class="team-logo" style="background:#00aa00;">
+                            <span style="color:white;font-weight:900;font-size:18px;">EVC</span>
                         </div>
                         <div class="team-name">EVC Edam O17-1</div>
                     </div>
-
                     <div class="score-container">
                         <div class="score">2</div>
                         <div class="score-separator">-</div>
                         <div class="score">4</div>
                     </div>
-
                     <div class="team away">
-                        <div class="team-logo">
-                            <img src="../assets/logos/logo_fcpurmerend_nieuw.png" alt="FC Purmerend O17-1">
+                        <div class="team-logo" style="background:#003399;">
+                            <span style="color:white;font-weight:900;font-size:16px;">FCP</span>
                         </div>
                         <div class="team-name">FC Purmerend O17-1</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Scheduled Match - FC Purmerend 3 -->
+            <!-- SCHEDULED -->
             <div class="match-card">
                 <div class="match-status">
                     <div class="match-time">16:30</div>
                     <div class="status-badge scheduled">Straks</div>
                 </div>
-
                 <div class="teams-container">
                     <div class="team home">
-                        <div class="team-logo">
-                            <img src="../assets/logos/logo_fcpurmerend_nieuw.png" alt="FC Purmerend 3">
+                        <div class="team-logo" style="background:#003399;">
+                            <span style="color:white;font-weight:900;font-size:16px;">FCP</span>
                         </div>
                         <div class="team-name">FC Purmerend ZA2</div>
                     </div>
-
                     <div class="score-container">
                         <div class="score">-</div>
                         <div class="score-separator">-</div>
                         <div class="score">-</div>
                     </div>
-
                     <div class="team away">
-                        <div class="team-logo">
-                            <div style="width: 100%; height: 100%; background: #ff6600; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px;">RKAV</div>
+                        <div class="team-logo" style="background:#ff6600;">
+                            <span style="color:white;font-weight:900;font-size:16px;">RKAV</span>
                         </div>
                         <div class="team-name">RKAV Volendam Za3</div>
                     </div>
@@ -554,9 +426,8 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-        <div>Laatste update: <span id="lastUpdate">18 feb 2026 - 15:23</span></div>
+        <div>Laatste update: <span id="lastUpdate">21 feb 2026 - 15:23</span></div>
         <div class="auto-refresh">
             <div class="refresh-dot"></div>
             <span>Updates automatisch elke 10 seconden</span>
@@ -564,40 +435,23 @@
     </div>
 
     <script>
-        // Auto-refresh timestamp
         function updateTimestamp() {
             const now = new Date();
-            const options = { 
-                day: 'numeric', 
-                month: 'short', 
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            document.getElementById('lastUpdate').textContent = 
-                now.toLocaleDateString('nl-NL', options).replace(',', ' -');
+            const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('lastUpdate').textContent = now.toLocaleDateString('nl-NL', options).replace(',', ' -');
         }
-
-        // Update every 10 seconds
-        setInterval(() => {
-            updateTimestamp();
-            // In production: fetch new data from API
-            console.log('Fetching latest scores...');
-        }, 10000);
-
-        // Initial update
+        setInterval(updateTimestamp, 10000);
         updateTimestamp();
 
-        // Simulate live time updates for demo
         setInterval(() => {
-            const liveTimes = document.querySelectorAll('.match-time.live');
-            liveTimes.forEach(timeEl => {
-                const currentTime = parseInt(timeEl.textContent);
-                if (!isNaN(currentTime) && currentTime < 90) {
-                    timeEl.textContent = (currentTime + 1) + "'";
+            ['time1','time2','time3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const t = parseInt(el.textContent);
+                    if (!isNaN(t) && t < 90) el.textContent = (t + 1) + "'";
                 }
             });
-        }, 60000); // Update every minute for demo
+        }, 60000);
     </script>
 </body>
 </html>
