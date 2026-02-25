@@ -1336,6 +1336,7 @@ td{padding:10px;border-bottom:1px solid #eee;font-size:14px}.row-goal{border-lef
 
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
+  window._firebaseDb = db;
   const auth = getAuth(app);
 
   const teamMapping = {
