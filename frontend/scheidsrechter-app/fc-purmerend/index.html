@@ -1299,5 +1299,153 @@ td{padding:10px;border-bottom:1px solid #eee;font-size:14px}.row-goal{border-lef
 
         console.log('✅ SCORR v2 — compact layout geladen');
     </script>
+    <!-- 
+  ================================================
+  SCORR - Wedstrijd Popup voor FC Purmerend
+  INSTRUCTIE: Plak deze code net voor </body> 
+  in je scheidsrechter app HTML
+  ================================================
+-->
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  // ⚠️ VERVANG DIT met jouw Firebase config
+  // Te vinden in Firebase Console → Project Settings → Your apps
+  const firebaseConfig = {
+    apiKey: "JOUW_API_KEY",
+    authDomain: "scorr-c604a.firebaseapp.com",
+    databaseURL: "https://scorr-c604a-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "scorr-c604a",
+    storageBucket: "scorr-c604a.appspot.com",
+    messagingSenderId: "JOUW_SENDER_ID",
+    appId: "JOUW_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const auth = getAuth(app);
+
+  // Team mapping op basis van ingelogd account
+  const teamMapping = {
+    "team1@fcpurmerend.nl": "FC Purmerend O14-1",
+    "team2@fcpurmerend.nl": "FC Purmerend O14-2",
+    "team3@fcpurmerend.nl": "FC Purmerend O16-1",
+    "team4@fcpurmerend.nl": "FC Purmerend O18-1"
+  };
+
+  // Wacht tot pagina geladen is
+  window.addEventListener('DOMContentLoaded', () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const teamNaam = teamMapping[user.email] || "Onbekend Team";
+        toonPopup(teamNaam, user.uid);
+      } else {
+        // Niet ingelogd? Terug naar login
+        window.location.href = '/frontend/auth/login.html';
+      }
+    });
+  });
+
+  function toonPopup(teamNaam, userId) {
+    const vandaag = new Date().toISOString().split('T')[0];
+    const huidigTijdstip = new Date().toTimeString().slice(0,5);
+
+    document.getElementById('scorr-popup-overlay').style.display = 'flex';
+    document.getElementById('popup-team-naam').textContent = teamNaam;
+    document.getElementById('popup-datum').value = vandaag;
+    document.getElementById('popup-tijdstip').value = huidigTijdstip;
+
+    document.getElementById('popup-start-btn').addEventListener('click', () => {
+      const tegenstander = document.getElementById('popup-tegenstander').value.trim();
+      const klasse = document.getElementById('popup-klasse').value.trim();
+      const datum = document.getElementById('popup-datum').value;
+      const tijdstip = document.getElementById('popup-tijdstip').value;
+
+      if (!tegenstander || !klasse) {
+        document.getElementById('popup-error').style.display = 'block';
+        return;
+      }
+
+      // Sla op in Firebase
+      const wedstrijdId = `${userId}_${datum}_${tijdstip.replace(':','')}`;
+      set(ref(db, `wedstrijden/${wedstrijdId}`), {
+        thuisteam: teamNaam,
+        uitteam: tegenstander,
+        klasse: klasse,
+        datum: datum,
+        tijdstip: tijdstip,
+        thuisscore: 0,
+        uitscore: 0,
+        status: 'gepland',
+        club: 'fc-purmerend'
+      });
+
+      // Sla lokaal op voor gebruik in de app
+      localStorage.setItem('wedstrijdId', wedstrijdId);
+      localStorage.setItem('thuisteam', teamNaam);
+      localStorage.setItem('uitteam', tegenstander);
+
+      // Sluit popup
+      document.getElementById('scorr-popup-overlay').style.display = 'none';
+    });
+  }
+</script>
+
+<!-- Popup HTML -->
+<div id="scorr-popup-overlay" style="display:none; position:fixed; inset:0; background:rgba(10,14,39,0.95); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#1E2749; border:1px solid rgba(0,255,136,0.3); border-radius:16px; padding:32px; width:100%; max-width:420px; font-family:'Lexend',sans-serif;">
+    
+    <!-- Header -->
+    <div style="text-align:center; margin-bottom:28px;">
+      <div style="font-size:28px; font-weight:900; color:#00FF88; letter-spacing:-1px;">SCORR</div>
+      <div style="font-size:12px; color:rgba(240,244,255,0.5); letter-spacing:3px; text-transform:uppercase; margin-top:4px;">Wedstrijd instellen</div>
+    </div>
+
+    <!-- Team (automatisch) -->
+    <div style="margin-bottom:16px;">
+      <label style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#00FF88; font-weight:600; display:block; margin-bottom:6px;">Jouw team</label>
+      <div id="popup-team-naam" style="background:rgba(0,255,136,0.08); border:1px solid rgba(0,255,136,0.2); border-radius:8px; padding:12px 16px; font-size:15px; font-weight:600; color:#F0F4FF;"></div>
+    </div>
+
+    <!-- Tegenstander -->
+    <div style="margin-bottom:16px;">
+      <label style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(240,244,255,0.6); font-weight:600; display:block; margin-bottom:6px;">Tegenstander *</label>
+      <input id="popup-tegenstander" type="text" placeholder="bijv. Ajax O14-3" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:12px 16px; font-size:15px; color:#F0F4FF; font-family:'Lexend',sans-serif; outline:none;" />
+    </div>
+
+    <!-- Klasse -->
+    <div style="margin-bottom:16px;">
+      <label style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(240,244,255,0.6); font-weight:600; display:block; margin-bottom:6px;">Klasse *</label>
+      <input id="popup-klasse" type="text" placeholder="bijv. 4e klasse district" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:12px 16px; font-size:15px; color:#F0F4FF; font-family:'Lexend',sans-serif; outline:none;" />
+    </div>
+
+    <!-- Datum + Tijdstip -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
+      <div>
+        <label style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(240,244,255,0.6); font-weight:600; display:block; margin-bottom:6px;">Datum</label>
+        <input id="popup-datum" type="date" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:12px 16px; font-size:14px; color:#F0F4FF; font-family:'Lexend',sans-serif; outline:none;" />
+      </div>
+      <div>
+        <label style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(240,244,255,0.6); font-weight:600; display:block; margin-bottom:6px;">Tijdstip</label>
+        <input id="popup-tijdstip" type="time" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:12px 16px; font-size:14px; color:#F0F4FF; font-family:'Lexend',sans-serif; outline:none;" />
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="popup-error" style="display:none; background:rgba(255,59,92,0.1); border:1px solid rgba(255,59,92,0.3); border-radius:8px; padding:10px 16px; font-size:13px; color:#FF3B5C; margin-bottom:16px;">
+      Vul tegenstander en klasse in om te starten.
+    </div>
+
+    <!-- Start button -->
+    <button id="popup-start-btn" style="width:100%; background:#00FF88; color:#0A0E27; border:none; border-radius:8px; padding:16px; font-size:16px; font-weight:700; font-family:'Lexend',sans-serif; cursor:pointer; letter-spacing:1px;">
+      ▶ START WEDSTRIJD
+    </button>
+
+  </div>
+</div>
 </body>
 </html>
