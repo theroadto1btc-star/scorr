@@ -494,119 +494,96 @@
         </div>
     </div>
 
-    <script>
-        console.log('🚀 SCORR Live View loaded');
+ <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
 
-        let notificationsEnabled = false;
+  const firebaseConfig = {
+    apiKey: "AIzaSyAputZcr7XyKRQL4-566a8gpS5R6SEL79U",
+    authDomain: "scorr-c604a.firebaseapp.com",
+    databaseURL: "https://scorr-c604a-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "scorr-c604a",
+    storageBucket: "scorr-c604a.firebasestorage.app",
+    messagingSenderId: "413840042688",
+    appId: "1:413840042688:web:3183c36fd20f27ac925b25"
+  };
 
-        // Check if notifications are already granted
-        if ('Notification' in window && Notification.permission === 'granted') {
-            notificationsEnabled = true;
-            document.getElementById('notificationPrompt').classList.add('hidden');
-        } else if ('Notification' in window && Notification.permission === 'denied') {
-            document.getElementById('notificationPrompt').classList.add('hidden');
-        }
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
 
-        // Request notification permission
-        async function requestNotifications() {
-            if (!('Notification' in window)) {
-                alert('❌ Je browser ondersteunt geen notificaties');
-                return;
-            }
+  // Haal wedstrijdId op uit URL: ?id=WEDSTRIJD_ID
+  const urlParams = new URLSearchParams(window.location.search);
+  const wedstrijdId = urlParams.get('id');
 
-            try {
-                const permission = await Notification.requestPermission();
-                
-                if (permission === 'granted') {
-                    notificationsEnabled = true;
-                    document.getElementById('notificationPrompt').classList.add('hidden');
-                    
-                    // Show test notification
-                    new Notification('🔔 SCORR Notificaties', {
-                        body: 'Je ontvangt nu updates bij doelpunten en kaarten!',
-                        icon: '⚽',
-                        badge: '⚽'
-                    });
-                    
-                    console.log('✅ Notifications enabled');
-                } else {
-                    alert('❌ Notificaties geweigerd. Je kunt dit later wijzigen in je browser instellingen.');
-                }
-            } catch (error) {
-                console.error('Notification error:', error);
-            }
-        }
+  let notificationsEnabled = false;
+  let vorigeThuis = null;
+  let vorigeUit = null;
 
-        // Send notification
-        function sendNotification(title, body, icon = '⚽') {
-            if (!notificationsEnabled || Notification.permission !== 'granted') {
-                return;
-            }
+  // Notificaties
+  if ('Notification' in window && Notification.permission === 'granted') {
+    notificationsEnabled = true;
+    document.getElementById('notificationPrompt').classList.add('hidden');
+  } else if ('Notification' in window && Notification.permission === 'denied') {
+    document.getElementById('notificationPrompt').classList.add('hidden');
+  }
 
-            try {
-                const notification = new Notification(title, {
-                    body: body,
-                    icon: icon,
-                    badge: '⚽',
-                    vibrate: [200, 100, 200]
-                });
+  window.requestNotifications = async function() {
+    if (!('Notification' in window)) return;
+    const permission = await Notification.requestPermission();
+    if (permission === 'granted') {
+      notificationsEnabled = true;
+      document.getElementById('notificationPrompt').classList.add('hidden');
+      new Notification('🔔 SCORR Notificaties', { body: 'Je ontvangt nu updates bij doelpunten en kaarten!' });
+    }
+  }
 
-                // Auto-close after 5 seconds
-                setTimeout(() => notification.close(), 5000);
-                
-                console.log('📢 Notification sent:', title);
-            } catch (error) {
-                console.error('Notification error:', error);
-            }
-        }
+  function sendNotification(title, body) {
+    if (!notificationsEnabled || Notification.permission !== 'granted') return;
+    const n = new Notification(title, { body });
+    setTimeout(() => n.close(), 5000);
+  }
 
-        // Simulate live updates (in production, this would be real-time from Firebase/Supabase)
-        function simulateLiveUpdate() {
-            const refreshIndicator = document.getElementById('refreshIndicator');
-            
-            // Show refresh indicator
-            refreshIndicator.classList.add('active');
-            
-            // Simulate data fetch
-            setTimeout(() => {
-                refreshIndicator.classList.remove('active');
-                console.log('🔄 Data refreshed');
-            }, 1000);
-        }
+  if (!wedstrijdId) {
+    document.querySelector('.match-title').textContent = 'GEEN WEDSTRIJD GESELECTEERD';
+    console.warn('Geen wedstrijd ID in URL');
+  } else {
+    // Live luisteren naar Firebase
+    onValue(ref(db, `wedstrijden/${wedstrijdId}`), (snapshot) => {
+      if (!snapshot.exists()) return;
+      const data = snapshot.val();
 
-        // Auto-refresh every 10 seconds
-        setInterval(simulateLiveUpdate, 10000);
+      // Teams en score bijwerken
+      document.getElementById('homeTeam').textContent = data.thuisteam || 'Thuis';
+      document.getElementById('awayTeam').textContent = data.uitteam || 'Uit';
+      document.getElementById('homeScore').textContent = data.thuisscore ?? '-';
+      document.getElementById('awayScore').textContent = data.uitscore ?? '-';
 
-        // Example: Simulate a new goal after 5 seconds (for demo)
-        setTimeout(() => {
-            // Add new timeline item
-            const timeline = document.getElementById('timeline');
-            const newItem = document.createElement('div');
-            newItem.className = 'timeline-item goal';
-            newItem.innerHTML = `
-                <div class="timeline-time">28'</div>
-                <div class="timeline-icon">⚽</div>
-                <div class="timeline-desc">DOELPUNT! FC Purmerend - Speler #7</div>
-            `;
-            timeline.insertBefore(newItem, timeline.firstChild);
-            
-            // Update score
-            document.getElementById('homeScore').textContent = '3';
-            
-            // Send notification
-            sendNotification(
-                '⚽ DOELPUNT!',
-                'FC Purmerend - Speler #7 (28\')',
-                '⚽'
-            );
-            
-            // Vibrate if supported
-            if ('vibrate' in navigator) {
-                navigator.vibrate([200, 100, 200]);
-            }
-        }, 5000);
+      // Wedstrijdtitel
+      document.querySelector('.match-title').textContent = data.klasse || 'WEDSTRIJD';
 
-        console.log('✅ Live view ready - Demo mode active');
-    </script>
+      // Status
+      const halfIndicator = document.getElementById('halfIndicator');
+      if (data.status === 'bezig') halfIndicator.textContent = '1e Helft';
+      else if (data.status === 'rust') halfIndicator.textContent = 'Rust';
+      else if (data.status === 'afgelopen') halfIndicator.textContent = 'Afgelopen';
+      else halfIndicator.textContent = 'Gepland';
+
+      // Notificatie bij nieuw doelpunt
+      if (vorigeThuis !== null && data.thuisscore > vorigeThuis) {
+        sendNotification('⚽ DOELPUNT!', `${data.thuisteam} scoort! ${data.thuisscore} - ${data.uitscore}`);
+        if ('vibrate' in navigator) navigator.vibrate([200, 100, 200]);
+      }
+      if (vorigeUit !== null && data.uitscore > vorigeUit) {
+        sendNotification('⚽ DOELPUNT!', `${data.uitteam} scoort! ${data.thuisscore} - ${data.uitscore}`);
+        if ('vibrate' in navigator) navigator.vibrate([200, 100, 200]);
+      }
+
+      vorigeThuis = data.thuisscore;
+      vorigeUit = data.uitscore;
+    });
+  }
+
+  console.log('✅ SCORR Live View geladen - Firebase actief');
+</script>
 </body>
 </html>
