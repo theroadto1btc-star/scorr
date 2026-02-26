@@ -897,18 +897,18 @@
             if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
         }
 
-        aasync function startTimer() {
-    if (!isRunning) {
-        isRunning = true;
-        timerStartTime = Date.now();
-        initAudioContext();
-        await requestWakeLock();
-        timerInterval = setInterval(() => {
-            updateDisplay();
-            checkTimeExpired();
-            saveTimerState();
-        }, 100);
-        saveTimerState();
+        async function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                timerStartTime = Date.now();
+                initAudioContext();
+                await requestWakeLock();
+                timerInterval = setInterval(() => {
+                    updateDisplay();
+                    checkTimeExpired();
+                    saveTimerState();
+                }, 100);
+saveTimerState();
 
         // Firebase status update
         const wedstrijdId = localStorage.getItem('wedstrijdId');
