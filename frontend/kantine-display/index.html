@@ -512,7 +512,10 @@
     if (snapshot.exists()) {
       snapshot.forEach((child) => {
         const data = child.val();
-        if (data.datum === vandaag) {
+        const wedstrijdDatum = new Date(data.datum);
+const nu = new Date();
+const verschilUren = (wedstrijdDatum - nu) / (1000 * 60 * 60);
+if (verschilUren >= -24 && verschilUren <= 48) {
           wedstrijden.push(data);
         }
       });
