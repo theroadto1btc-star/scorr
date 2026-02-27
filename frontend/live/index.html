@@ -12,9 +12,7 @@
             --dark2: #1E2749;
             --red: #FF3B5C;
             --yellow: #FFD600;
-            --blue: #00C8FF;
             --white: #F0F4FF;
-            --gray: #4A5580;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,12 +24,11 @@
             color: var(--white);
         }
 
-        /* Background grid */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -47,7 +44,6 @@
             padding-bottom: 40px;
         }
 
-        /* Header */
         .scorr-header {
             background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
             padding: 24px 20px 20px;
@@ -66,52 +62,37 @@
         }
 
         .scorr-logo {
-            font-size: 36px;
-            font-weight: 900;
-            color: var(--green);
-            letter-spacing: -2px;
-            line-height: 1;
-            margin-bottom: 6px;
-            position: relative;
+            font-size: 36px; font-weight: 900; color: var(--green);
+            letter-spacing: -2px; line-height: 1; margin-bottom: 6px; position: relative;
         }
 
         .scorr-tagline {
-            font-size: 10px;
-            color: rgba(240,244,255,0.5);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 400;
-            margin-bottom: 14px;
-            position: relative;
+            font-size: 10px; color: rgba(240,244,255,0.5);
+            letter-spacing: 3px; text-transform: uppercase;
+            font-weight: 400; margin-bottom: 14px; position: relative;
         }
 
         .live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--red);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--red); color: white;
+            padding: 6px 16px; border-radius: 20px;
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px; position: relative;
         }
 
         .live-badge.gepland {
-            background: rgba(255,214,0,0.2);
-            color: var(--yellow);
+            background: rgba(255,214,0,0.2); color: var(--yellow);
             border: 1px solid rgba(255,214,0,0.4);
         }
 
+        .live-badge.afgelopen {
+            background: rgba(255,59,92,0.2); color: var(--red);
+            border: 1px solid rgba(255,59,92,0.4);
+        }
+
         .live-dot {
-            width: 7px;
-            height: 7px;
-            background: white;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+            width: 7px; height: 7px; background: white;
+            border-radius: 50%; animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
@@ -119,179 +100,110 @@
             50% { opacity: 0.4; transform: scale(0.7); }
         }
 
-        /* Notificatie */
         .notification-prompt {
             margin: 16px;
             background: rgba(0,255,136,0.06);
             border: 1px solid rgba(0,255,136,0.2);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            border-radius: 12px; padding: 16px;
+            display: flex; align-items: center; gap: 12px;
         }
 
         .notification-prompt.hidden { display: none; }
-
         .notification-icon { font-size: 24px; }
-
         .notification-text { flex: 1; }
-
-        .notification-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 2px;
-        }
-
-        .notification-desc {
-            font-size: 11px;
-            color: rgba(240,244,255,0.5);
-        }
+        .notification-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+        .notification-desc { font-size: 11px; color: rgba(240,244,255,0.5); }
 
         .notification-btn {
-            background: var(--green);
-            color: var(--dark);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Lexend', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
+            background: var(--green); color: var(--dark); border: none;
+            padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700;
+            cursor: pointer; font-family: 'Lexend', sans-serif;
+            text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
         }
 
-        /* Match info */
         .match-info {
             margin: 16px;
             background: rgba(30,39,73,0.8);
             border: 1px solid rgba(0,255,136,0.15);
-            border-radius: 16px;
-            padding: 24px 20px;
+            border-radius: 16px; padding: 24px 20px;
         }
 
         .match-title {
-            text-align: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--green);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-align: center; font-size: 11px; font-weight: 600;
+            color: var(--green); margin-bottom: 6px;
+            text-transform: uppercase; letter-spacing: 2px;
         }
 
         .match-datetime {
-            text-align: center;
-            font-size: 12px;
-            color: rgba(240,244,255,0.4);
-            margin-bottom: 24px;
-            font-weight: 300;
+            text-align: center; font-size: 12px;
+            color: rgba(240,244,255,0.4); margin-bottom: 24px; font-weight: 300;
         }
 
         .teams-container {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 10px;
-            align-items: center;
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            gap: 10px; align-items: center;
         }
 
         .team { text-align: center; }
 
         .team-name {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 12px;
-            line-height: 1.3;
+            font-size: 13px; font-weight: 700; color: var(--white);
+            margin-bottom: 12px; line-height: 1.3;
         }
 
         .score-display {
-            font-size: 72px;
-            font-weight: 900;
-            color: var(--green);
-            line-height: 1;
-            text-shadow: 0 0 30px rgba(0,255,136,0.3);
+            font-size: 72px; font-weight: 900; color: var(--green);
+            line-height: 1; text-shadow: 0 0 30px rgba(0,255,136,0.3);
         }
 
-        .vs {
-            font-size: 14px;
-            font-weight: 700;
-            color: rgba(240,244,255,0.2);
-        }
+        .vs { font-size: 14px; font-weight: 700; color: rgba(240,244,255,0.2); }
 
-        /* Timer */
         .timer-section {
             margin: 0 16px 16px;
             background: rgba(30,39,73,0.8);
             border: 1px solid rgba(0,255,136,0.2);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            border-radius: 16px; padding: 20px; text-align: center;
+            position: relative; overflow: hidden;
         }
 
         .timer-section::before {
             content: '';
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: radial-gradient(circle at 50% 50%, rgba(0,255,136,0.05) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .half-indicator {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--green);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 8px;
-            position: relative;
+            font-size: 11px; font-weight: 700; color: var(--green);
+            text-transform: uppercase; letter-spacing: 3px;
+            margin-bottom: 8px; position: relative;
         }
 
         .timer-display {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            color: var(--green);
-            text-shadow: 0 0 20px rgba(0,255,136,0.4);
-            position: relative;
-            font-variant-numeric: tabular-nums;
+            font-size: 48px; font-weight: 900; letter-spacing: 4px;
+            color: var(--green); text-shadow: 0 0 20px rgba(0,255,136,0.4);
+            position: relative; font-variant-numeric: tabular-nums;
         }
 
-        /* Timeline */
         .timeline-section {
             margin: 0 16px 16px;
             background: rgba(30,39,73,0.8);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 16px; padding: 20px;
         }
 
         .timeline-header {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 16px;
-            padding-bottom: 12px;
+            font-size: 13px; font-weight: 700; color: var(--white);
+            margin-bottom: 16px; padding-bottom: 12px;
             border-bottom: 1px solid rgba(0,255,136,0.2);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; align-items: center; gap: 8px;
         }
 
         .timeline-item {
-            padding: 12px 14px;
-            margin-bottom: 8px;
+            padding: 12px 14px; margin-bottom: 8px;
             background: rgba(255,255,255,0.04);
-            border-radius: 10px;
-            border-left: 3px solid var(--green);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            border-radius: 10px; border-left: 3px solid var(--green);
+            display: flex; align-items: center; gap: 12px;
             animation: slideIn 0.3s ease-out;
         }
 
@@ -301,78 +213,40 @@
         }
 
         .timeline-item.goal { border-left-color: var(--green); }
-        .timeline-item.yellow { border-left-color: var(--yellow); background: rgba(255,214,0,0.04); }
-        .timeline-item.red { border-left-color: var(--red); background: rgba(255,59,92,0.04); }
+        .timeline-item.yellow-card { border-left-color: var(--yellow); background: rgba(255,214,0,0.04); }
+        .timeline-item.red-card { border-left-color: var(--red); background: rgba(255,59,92,0.04); }
 
-        .timeline-time {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--white);
-            min-width: 32px;
-        }
-
+        .timeline-time { font-size: 14px; font-weight: 700; color: var(--white); min-width: 32px; }
         .timeline-icon { font-size: 20px; }
-
-        .timeline-desc {
-            flex: 1;
-            font-size: 13px;
-            color: rgba(240,244,255,0.7);
-            font-weight: 400;
-            line-height: 1.4;
-        }
+        .timeline-desc { flex: 1; font-size: 13px; color: rgba(240,244,255,0.7); font-weight: 400; line-height: 1.4; }
 
         .timeline-empty {
-            text-align: center;
-            padding: 30px 20px;
-            color: rgba(240,244,255,0.25);
-            font-size: 13px;
-            font-weight: 300;
+            text-align: center; padding: 30px 20px;
+            color: rgba(240,244,255,0.25); font-size: 13px; font-weight: 300;
         }
 
-        /* Footer */
         .footer {
-            text-align: center;
-            padding: 24px 20px;
-            color: rgba(240,244,255,0.25);
-            font-size: 11px;
+            text-align: center; padding: 24px 20px;
+            color: rgba(240,244,255,0.25); font-size: 11px;
         }
 
-        .footer-logo {
-            font-size: 18px;
-            font-weight: 900;
-            color: var(--green);
-            margin-bottom: 4px;
-            letter-spacing: -1px;
-        }
+        .footer-logo { font-size: 18px; font-weight: 900; color: var(--green); margin-bottom: 4px; letter-spacing: -1px; }
 
-        /* Refresh */
         .refresh-indicator {
-            position: fixed;
-            top: 16px;
-            right: 16px;
-            background: var(--green);
-            color: var(--dark);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
+            position: fixed; top: 16px; right: 16px;
+            background: var(--green); color: var(--dark);
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 11px; font-weight: 700;
+            display: flex; align-items: center; gap: 6px;
+            z-index: 1000; opacity: 0; transition: opacity 0.3s;
         }
 
         .refresh-indicator.active { opacity: 1; }
 
         .refresh-spinner {
-            width: 10px;
-            height: 10px;
-            border: 2px solid var(--dark);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            width: 10px; height: 10px;
+            border: 2px solid var(--dark); border-top-color: transparent;
+            border-radius: 50%; animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -380,7 +254,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="scorr-header">
             <div class="scorr-logo">SCORR</div>
             <div class="scorr-tagline">Live Scores. Real Football.</div>
@@ -390,20 +263,16 @@
             </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content" style="padding-top: 4px;">
-
-            <!-- Notificatie -->
+        <div style="padding-top: 4px;">
             <div class="notification-prompt" id="notificationPrompt">
                 <div class="notification-icon">🔔</div>
                 <div class="notification-text">
                     <div class="notification-title">Mis geen doelpunt!</div>
                     <div class="notification-desc">Ontvang notificaties bij doelpunten en kaarten</div>
                 </div>
-                <button class="notification-btn" onclick="requestNotifications()">Aanzetten</button>
+                <button class="notification-btn" id="notifBtn">Aanzetten</button>
             </div>
 
-            <!-- Match Info -->
             <div class="match-info">
                 <div class="match-title" id="matchTitle">WEDSTRIJD</div>
                 <div class="match-datetime" id="matchDatetime"></div>
@@ -420,13 +289,11 @@
                 </div>
             </div>
 
-            <!-- Timer -->
             <div class="timer-section">
                 <div class="half-indicator" id="halfIndicator">Gepland</div>
                 <div class="timer-display" id="timerDisplay">--:--</div>
             </div>
 
-            <!-- Timeline -->
             <div class="timeline-section">
                 <div class="timeline-header">📋 Wedstrijdverloop</div>
                 <div id="timeline">
@@ -434,135 +301,206 @@
                 </div>
             </div>
 
-            <!-- Footer -->
             <div class="footer">
                 <div class="footer-logo">SCORR</div>
                 <div>Powered by SCORR Live</div>
             </div>
         </div>
 
-        <!-- Refresh Indicator -->
         <div class="refresh-indicator" id="refreshIndicator">
             <div class="refresh-spinner"></div>
             Live
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+    <script>
+        var DB_BASE = 'https://scorr-c604a-default-rtdb.europe-west1.firebasedatabase.app';
+        var urlParams = new URLSearchParams(window.location.search);
+        var wedstrijdId = urlParams.get('id');
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAputZcr7XyKRQL4-566a8gpS5R6SEL79U",
-            authDomain: "scorr-c604a.firebaseapp.com",
-            databaseURL: "https://scorr-c604a-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "scorr-c604a",
-            storageBucket: "scorr-c604a.firebasestorage.app",
-            messagingSenderId: "413840042688",
-            appId: "1:413840042688:web:3183c36fd20f27ac925b25"
-        };
+        var notificationsEnabled = false;
+        var vorigeThuis = null;
+        var vorigeUit = null;
+        var timerInterval = null;
+        var huidigeData = null;
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const wedstrijdId = urlParams.get('id');
-
-        let notificationsEnabled = false;
-        let vorigeThuis = null;
-        let vorigeUit = null;
-
-        // Notificaties check
-        if ('Notification' in window && Notification.permission === 'granted') {
-            notificationsEnabled = true;
-            document.getElementById('notificationPrompt').classList.add('hidden');
-        } else if ('Notification' in window && Notification.permission === 'denied') {
-            document.getElementById('notificationPrompt').classList.add('hidden');
-        }
-
-        window.requestNotifications = async function() {
-            if (!('Notification' in window)) return;
-            const permission = await Notification.requestPermission();
-            if (permission === 'granted') {
+        // ===== NOTIFICATIES =====
+        function checkNotificationStatus() {
+            if (!('Notification' in window)) {
+                document.getElementById('notificationPrompt').classList.add('hidden');
+                return;
+            }
+            if (Notification.permission === 'granted') {
                 notificationsEnabled = true;
                 document.getElementById('notificationPrompt').classList.add('hidden');
-                new Notification('🔔 SCORR', { body: 'Je ontvangt nu updates bij doelpunten en kaarten!' });
+            } else if (Notification.permission === 'denied') {
+                document.getElementById('notificationPrompt').classList.add('hidden');
             }
         }
 
+        document.getElementById('notifBtn').addEventListener('click', function() {
+            if (!('Notification' in window)) return;
+            Notification.requestPermission().then(function(permission) {
+                if (permission === 'granted') {
+                    notificationsEnabled = true;
+                    document.getElementById('notificationPrompt').classList.add('hidden');
+                    new Notification('🔔 SCORR', { body: 'Je ontvangt nu updates bij doelpunten en kaarten!' });
+                }
+            });
+        });
+
         function sendNotification(title, body) {
             if (!notificationsEnabled || Notification.permission !== 'granted') return;
-            const n = new Notification(title, { body });
-            setTimeout(() => n.close(), 5000);
+            var n = new Notification(title, { body: body });
+            setTimeout(function() { n.close(); }, 5000);
         }
 
+        // ===== TIMER =====
+        function startLiveTimer(data) {
+            if (timerInterval) clearInterval(timerInterval);
+            if (data.status !== 'bezig' && data.status !== 'rust') return;
+
+            function updateTimer() {
+                if (!huidigeData || !huidigeData.startTijd) return;
+                var nu = Date.now();
+                var verstreken = Math.floor((nu - huidigeData.startTijd) / 1000);
+                var helfttijd = (huidigeData.helfttijd || 45) * 60;
+                var seconden = Math.min(verstreken, helfttijd);
+                var min = Math.floor(seconden / 60);
+                var sec = seconden % 60;
+                var display = (min < 10 ? '0' : '') + min + ':' + (sec < 10 ? '0' : '') + sec;
+                document.getElementById('timerDisplay').textContent = display;
+            }
+
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        // ===== DATUM FORMAT =====
         function formatDatum(datum, tijdstip) {
             if (!datum) return '';
-            const d = new Date(datum + 'T00:00:00');
-            const opties = { weekday: 'long', day: 'numeric', month: 'long' };
-            const datumStr = d.toLocaleDateString('nl-NL', opties);
-            return tijdstip ? `${datumStr} · ${tijdstip} uur` : datumStr;
+            var d = new Date(datum + 'T00:00:00');
+            var opties = { weekday: 'long', day: 'numeric', month: 'long' };
+            var datumStr = d.toLocaleDateString('nl-NL', opties);
+            return tijdstip ? datumStr + ' · ' + tijdstip + ' uur' : datumStr;
+        }
+
+        // ===== TIMELINE =====
+        function renderTimeline(events) {
+            var container = document.getElementById('timeline');
+            if (!events || Object.keys(events).length === 0) {
+                container.innerHTML = '<div class="timeline-empty">Nog geen gebeurtenissen</div>';
+                return;
+            }
+
+            var lijst = [];
+            for (var key in events) {
+                if (events.hasOwnProperty(key)) {
+                    lijst.push(events[key]);
+                }
+            }
+
+            // Sorteer op minuut (nieuwste eerst)
+            lijst.sort(function(a, b) { return (b.minuut || 0) - (a.minuut || 0); });
+
+            var html = '';
+            for (var i = 0; i < lijst.length; i++) {
+                var e = lijst[i];
+                var type = e.type || 'goal';
+                var icon = type === 'goal' ? '⚽' : type === 'yellow-card' ? '🟨' : type === 'red-card' ? '🟥' : '📋';
+                html += '<div class="timeline-item ' + type + '">';
+                html += '<div class="timeline-time">' + (e.minuut || '?') + '\'</div>';
+                html += '<div class="timeline-icon">' + icon + '</div>';
+                html += '<div class="timeline-desc">' + (e.omschrijving || '') + '</div>';
+                html += '</div>';
+            }
+            container.innerHTML = html;
+        }
+
+        // ===== DATA UPDATE =====
+        function updateUI(data) {
+            huidigeData = data;
+
+            document.getElementById('homeTeam').textContent = data.thuisteam || 'Thuis';
+            document.getElementById('awayTeam').textContent = data.uitteam || 'Uit';
+            document.getElementById('homeScore').textContent = data.status === 'gepland' ? '-' : (data.thuisscore !== undefined ? data.thuisscore : 0);
+            document.getElementById('awayScore').textContent = data.status === 'gepland' ? '-' : (data.uitscore !== undefined ? data.uitscore : 0);
+            document.getElementById('matchTitle').textContent = data.klasse || 'WEDSTRIJD';
+            document.getElementById('matchDatetime').textContent = formatDatum(data.datum, data.tijdstip);
+
+            var halfIndicator = document.getElementById('halfIndicator');
+            var liveBadge = document.getElementById('liveBadge');
+            var timerDisplay = document.getElementById('timerDisplay');
+
+            if (data.status === 'bezig') {
+                halfIndicator.textContent = '1e Helft';
+                liveBadge.className = 'live-badge';
+                liveBadge.innerHTML = '<div class="live-dot"></div> LIVE';
+                startLiveTimer(data);
+            } else if (data.status === 'rust') {
+                halfIndicator.textContent = 'Rust';
+                liveBadge.className = 'live-badge';
+                liveBadge.innerHTML = '<div class="live-dot"></div> RUST';
+                if (timerInterval) clearInterval(timerInterval);
+                timerDisplay.textContent = 'RUST';
+            } else if (data.status === 'afgelopen') {
+                halfIndicator.textContent = 'Afgelopen';
+                liveBadge.className = 'live-badge afgelopen';
+                liveBadge.innerHTML = 'AFGELOPEN';
+                if (timerInterval) clearInterval(timerInterval);
+                timerDisplay.textContent = 'AFG';
+            } else {
+                halfIndicator.textContent = 'Gepland';
+                liveBadge.className = 'live-badge gepland';
+                liveBadge.innerHTML = '📅 ' + (data.tijdstip || '');
+                if (timerInterval) clearInterval(timerInterval);
+                timerDisplay.textContent = data.tijdstip || '--:--';
+            }
+
+            // Notificatie bij doelpunt
+            if (vorigeThuis !== null && data.thuisscore > vorigeThuis) {
+                sendNotification('⚽ DOELPUNT!', (data.thuisteam || 'Thuis') + ' scoort! ' + data.thuisscore + ' - ' + data.uitscore);
+                if ('vibrate' in navigator) navigator.vibrate([200, 100, 200]);
+            }
+            if (vorigeUit !== null && data.uitscore > vorigeUit) {
+                sendNotification('⚽ DOELPUNT!', (data.uitteam || 'Uit') + ' scoort! ' + data.thuisscore + ' - ' + data.uitscore);
+                if ('vibrate' in navigator) navigator.vibrate([200, 100, 200]);
+            }
+
+            vorigeThuis = data.thuisscore;
+            vorigeUit = data.uitscore;
+
+            // Timeline
+            renderTimeline(data.events || null);
+
+            // Refresh indicator
+            var ri = document.getElementById('refreshIndicator');
+            ri.classList.add('active');
+            setTimeout(function() { ri.classList.remove('active'); }, 1000);
+        }
+
+        // ===== POLLING =====
+        function fetchWedstrijd() {
+            if (!wedstrijdId) return;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', DB_BASE + '/wedstrijden/' + wedstrijdId + '.json', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    try {
+                        var data = JSON.parse(xhr.responseText);
+                        if (data) updateUI(data);
+                    } catch(e) {}
+                }
+            };
+            xhr.send();
         }
 
         if (!wedstrijdId) {
             document.getElementById('matchTitle').textContent = 'GEEN WEDSTRIJD GEVONDEN';
         } else {
-            onValue(ref(db, `wedstrijden/${wedstrijdId}`), (snapshot) => {
-                if (!snapshot.exists()) return;
-                const data = snapshot.val();
-
-                // Teams en score
-                document.getElementById('homeTeam').textContent = data.thuisteam || 'Thuis';
-                document.getElementById('awayTeam').textContent = data.uitteam || 'Uit';
-                document.getElementById('homeScore').textContent = data.status === 'gepland' ? '-' : (data.thuisscore ?? 0);
-                document.getElementById('awayScore').textContent = data.status === 'gepland' ? '-' : (data.uitscore ?? 0);
-
-                // Titel en datum
-                document.getElementById('matchTitle').textContent = data.klasse || 'WEDSTRIJD';
-                document.getElementById('matchDatetime').textContent = formatDatum(data.datum, data.tijdstip);
-
-                // Status
-                const halfIndicator = document.getElementById('halfIndicator');
-                const liveBadge = document.getElementById('liveBadge');
-
-                if (data.status === 'bezig') {
-                    halfIndicator.textContent = '1e Helft';
-                    liveBadge.className = 'live-badge';
-                    liveBadge.innerHTML = '<div class="live-dot"></div> LIVE';
-                } else if (data.status === 'rust') {
-                    halfIndicator.textContent = 'Rust';
-                    liveBadge.className = 'live-badge';
-                    liveBadge.innerHTML = '<div class="live-dot"></div> RUST';
-                } else if (data.status === 'afgelopen') {
-                    halfIndicator.textContent = 'Afgelopen';
-                    liveBadge.className = 'live-badge gepland';
-                    liveBadge.innerHTML = 'AFGELOPEN';
-                    document.getElementById('timerDisplay').textContent = 'AFG';
-                } else {
-                    halfIndicator.textContent = 'Gepland';
-                    liveBadge.className = 'live-badge gepland';
-                    liveBadge.innerHTML = `📅 ${data.tijdstip || ''}`;
-                    document.getElementById('timerDisplay').textContent = data.tijdstip || '--:--';
-                }
-
-                // Notificatie bij doelpunt
-                if (vorigeThuis !== null && data.thuisscore > vorigeThuis) {
-                    sendNotification('⚽ DOELPUNT!', `${data.thuisteam} scoort! ${data.thuisscore} - ${data.uitscore}`);
-                    if ('vibrate' in navigator) navigator.vibrate([200, 100, 200]);
-                }
-                if (vorigeUit !== null && data.uitscore > vorigeUit) {
-                    sendNotification('⚽ DOELPUNT!', `${data.uitteam} scoort! ${data.thuisscore} - ${data.uitscore}`);
-                    if ('vibrate' in navigator) navigator.vibrate([200, 100, 200]);
-                }
-
-                vorigeThuis = data.thuisscore;
-                vorigeUit = data.uitscore;
-
-                // Refresh indicator
-                const ri = document.getElementById('refreshIndicator');
-                ri.classList.add('active');
-                setTimeout(() => ri.classList.remove('active'), 1000);
-            });
+            checkNotificationStatus();
+            fetchWedstrijd();
+            setInterval(fetchWedstrijd, 5000);
         }
     </script>
 </body>
