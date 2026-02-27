@@ -1440,22 +1440,6 @@ td{padding:10px;border-bottom:1px solid #eee;font-size:14px}.row-goal{border-lef
     halfDuration = helfttijd;
     document.getElementById('scorr-popup-overlay').style.display = 'none';
 };
-
-      localStorage.setItem('wedstrijdId', wedstrijdId);
-      localStorage.setItem('thuisteam', teamNaam);
-      localStorage.setItem('uitteam', tegenstander);
-// Teamnamen invullen in de app
-document.getElementById('homeTeamName').value = teamNaam;
-document.getElementById('awayTeamName').value = tegenstander;
-
-// Helfttijd instellen
-const helfttijd = parseInt(document.getElementById('popup-helfttijd').value) || 45;
-halfDuration = helfttijd;
-document.getElementById('homeTeamName').value = teamNaam;
-document.getElementById('awayTeamName').value = tegenstander;
-document.getElementById('scorr-popup-overlay').style.display = 'none';
-    };
-  }
 </script>
 
 <!-- Banner: wedstrijd al gepland -->
