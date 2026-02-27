@@ -399,80 +399,81 @@
         }
 
         /* ===== RESPONSIVE: VERTICAAL SCHERM ===== */
-        @media (max-width: 768px) {
-            .header {
-                padding: 20px 20px;
-                flex-wrap: wrap;
-                gap: 12px;
-            }
+@media (max-width: 768px) {
+    .header {
+        padding: 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .club-name { font-size: 20px; }
+    .scorr-logo { font-size: 32px; }
+    .club-logo { width: 44px; height: 44px; font-size: 20px; }
+    .live-ticker { padding: 8px 16px; }
+    .ticker-update { display: none; }
+    .container { padding: 12px 16px; }
+    
+    .match-card {
+        padding: 14px 16px;
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .match-status {
+        flex-direction: column;
+        align-items: center;
+        min-width: 64px;
+        gap: 4px;
+    }
+    
+    .match-time { font-size: 18px; }
+    .card-divider { display: none; }
+    
+    .teams-row {
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+    }
+    
+    .team, .team.away {
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 8px;
+    }
+    
+    .team.away .team-name { text-align: left; }
+    .team-name { font-size: 14px; }
+    .team-logo { width: 32px; height: 32px; font-size: 10px; }
+    
+    .score-block {
+        justify-content: center;
+        padding: 4px 0;
+        gap: 4px;
+    }
+    
+    .score { font-size: 28px; min-width: 32px; }
+    .score-sep { font-size: 20px; }
+    
+    .veld-badge { display: none; }
+    
+    .footer {
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 16px;
+        font-size: 11px;
+    }
+}
 
-            .club-name { font-size: 22px; }
-            .scorr-logo { font-size: 36px; }
-            .club-logo { width: 48px; height: 48px; font-size: 22px; }
-
-            .live-ticker { padding: 8px 20px; }
-            .ticker-update { display: none; }
-
-            .container { padding: 20px; }
-
-            .match-card {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 16px;
-                gap: 12px;
-            }
-
-            .match-status {
-                flex-direction: row;
-                min-width: unset;
-                justify-content: flex-start;
-                gap: 10px;
-            }
-
-            .match-time { font-size: 20px; }
-
-            .card-divider { display: none; }
-
-            .teams-row {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .team, .team.away {
-                flex-direction: row;
-                justify-content: flex-start;
-                width: 100%;
-            }
-
-            .team.away .team-name { text-align: left; }
-
-            .team-name { font-size: 16px; }
-
-            .score-block {
-                justify-content: center;
-                padding: 8px 0;
-                border-top: 1px solid rgba(255,255,255,0.06);
-                border-bottom: 1px solid rgba(255,255,255,0.06);
-            }
-
-            .score { font-size: 36px; min-width: 40px; }
-
-            .footer {
-                flex-direction: column;
-                gap: 8px;
-                padding: 16px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .club-name { font-size: 18px; }
-            .header-subtitle { font-size: 10px; }
-            .scorr-logo { font-size: 28px; }
-            .section-title { font-size: 15px; }
-            .team-name { font-size: 14px; }
-            .score { font-size: 30px; }
-            .team-logo { width: 36px; height: 36px; font-size: 10px; }
-        }
+@media (max-width: 480px) {
+    .club-name { font-size: 17px; }
+    .header-subtitle { font-size: 9px; }
+    .scorr-logo { font-size: 26px; }
+    .section-title { font-size: 14px; }
+    .team-name { font-size: 13px; }
+    .score { font-size: 24px; }
+    .match-time { font-size: 16px; }
+}
     </style>
 </head>
 <body>
