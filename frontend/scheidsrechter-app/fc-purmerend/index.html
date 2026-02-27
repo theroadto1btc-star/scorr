@@ -1204,6 +1204,18 @@ function changeScore(team, delta) {
 
             events.unshift({ minute, type, description, team });
             renderEvents();
+            // Opslaan in Firebase
+var wId = localStorage.getItem('wedstrijdId');
+if (wId && window._firebaseDb && type !== 'half' && type !== 'end') {
+    import("https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js").then(function(m) {
+        m.push(m.ref(window._firebaseDb, 'wedstrijden/' + wId + '/events'), {
+            type: type === 'yellow' ? 'yellow-card' : type === 'red' ? 'red-card' : 'goal',
+            minuut: minute,
+            omschrijving: description,
+            tijdstip: Date.now()
+        });
+    });
+}
         }
 
         function renderEvents() {
