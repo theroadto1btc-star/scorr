@@ -1441,22 +1441,6 @@ td{padding:10px;border-bottom:1px solid #eee;font-size:14px}.row-goal{border-lef
     document.getElementById('scorr-popup-overlay').style.display = 'none';
 };
 
-      const wedstrijdId = huidigWedstrijdId || `${user.uid}_${datum}_${tijdstip.replace(':','')}`;
-
-set(ref(db, `wedstrijden/${wedstrijdId}`), {
-    thuisteam: teamNaam,
-    uitteam: tegenstander,
-    klasse: klasse,
-    datum: datum,
-    tijdstip: tijdstip,
-    helfttijd: helfttijd,
-    veld: document.getElementById('popup-veld').value,
-    thuisscore: 0,
-    uitscore: 0,
-    status: 'gepland',
-    club: 'fc-purmerend'
-});
-
       localStorage.setItem('wedstrijdId', wedstrijdId);
       localStorage.setItem('thuisteam', teamNaam);
       localStorage.setItem('uitteam', tegenstander);
