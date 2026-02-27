@@ -12,7 +12,6 @@
             --dark2: #1E2749;
             --red: #FF3B5C;
             --yellow: #FFD600;
-            --blue: #00C8FF;
             --white: #F0F4FF;
         }
 
@@ -29,7 +28,7 @@
         body::before {
             content: '';
             position: fixed;
-            inset: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background-image:
                 linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
@@ -54,156 +53,75 @@
             content: '';
             position: absolute;
             bottom: -1px;
-            left: 0;
-            right: 0;
+            left: 0; right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--green), transparent);
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+        .header-left { display: flex; align-items: center; gap: 20px; }
 
         .club-logo {
-            width: 64px;
-            height: 64px;
+            width: 64px; height: 64px;
             background: rgba(255,255,255,0.08);
             border: 2px solid rgba(0,255,136,0.3);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; flex-shrink: 0;
         }
 
-        .club-name {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.1;
-        }
-
-        .header-subtitle {
-            font-size: 11px;
-            color: var(--green);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 4px;
-        }
+        .club-name { font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.1; }
+        .header-subtitle { font-size: 11px; color: var(--green); font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-top: 4px; }
 
         .scorr-logo {
-            font-size: 52px;
-            font-weight: 900;
-            letter-spacing: -3px;
-            color: var(--green);
-            text-shadow: 0 0 40px rgba(0,255,136,0.3);
-            line-height: 1;
-            flex-shrink: 0;
+            font-size: 52px; font-weight: 900; letter-spacing: -3px;
+            color: var(--green); text-shadow: 0 0 40px rgba(0,255,136,0.3);
+            line-height: 1; flex-shrink: 0;
         }
 
         .live-ticker {
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
             background: rgba(0,255,136,0.06);
             border-bottom: 1px solid rgba(0,255,136,0.15);
             padding: 10px 40px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
+            display: flex; align-items: center; gap: 16px;
         }
 
         .live-pill {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--red);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            flex-shrink: 0;
+            display: flex; align-items: center; gap: 6px;
+            background: var(--red); color: white;
+            padding: 4px 12px; border-radius: 20px;
+            font-size: 10px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; flex-shrink: 0;
         }
 
         .live-dot {
-            width: 6px;
-            height: 6px;
-            background: white;
-            border-radius: 50%;
-            animation: blink 1.5s infinite;
+            width: 6px; height: 6px; background: white;
+            border-radius: 50%; animation: blink 1.5s infinite;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.2; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-        .ticker-text {
-            font-size: 12px;
-            color: rgba(240,244,255,0.5);
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
+        .ticker-text { font-size: 12px; color: rgba(240,244,255,0.5); font-weight: 300; letter-spacing: 1px; }
+        .ticker-update { margin-left: auto; font-size: 11px; color: rgba(240,244,255,0.3); }
 
-        .ticker-update {
-            margin-left: auto;
-            font-size: 11px;
-            color: rgba(240,244,255,0.3);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 32px 40px;
-        }
+        .container { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 32px 40px; }
 
         .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 20px; padding-bottom: 16px;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .section-icon { font-size: 24px; }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--white);
-            flex: 1;
-        }
-
-        .match-count {
-            font-size: 12px;
-            color: rgba(240,244,255,0.4);
-            background: rgba(255,255,255,0.06);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
+        .section-title { font-size: 18px; font-weight: 700; color: var(--white); flex: 1; }
+        .match-count { font-size: 12px; color: rgba(240,244,255,0.4); background: rgba(255,255,255,0.06); padding: 4px 12px; border-radius: 20px; font-weight: 600; }
 
         .match-card {
             background: rgba(30,39,73,0.6);
             border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 16px;
-            padding: 20px 28px;
+            border-radius: 16px; padding: 20px 28px;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            display: flex; align-items: center; gap: 20px;
             transition: all 0.3s ease;
         }
 
@@ -215,180 +133,62 @@
 
         .match-card.afgelopen { opacity: 0.6; }
 
-        .match-status {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 88px;
-            gap: 6px;
-        }
+        .match-status { display: flex; flex-direction: column; align-items: center; min-width: 88px; gap: 6px; }
 
-        .match-time {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1;
-        }
-
-        .match-time.live {
-            color: var(--green);
-            animation: glow 2s ease-in-out infinite;
-        }
+        .match-time { font-size: 26px; font-weight: 700; color: var(--white); line-height: 1; }
+        .match-time.live { color: var(--green); animation: glow 2s ease-in-out infinite; }
 
         @keyframes glow {
             0%, 100% { text-shadow: 0 0 8px rgba(0,255,136,0.4); }
             50% { text-shadow: 0 0 20px rgba(0,255,136,0.8); }
         }
 
-        .status-badge {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 3px 10px;
-            border-radius: 10px;
-        }
-
+        .status-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 10px; }
         .status-badge.live { background: var(--green); color: var(--dark); }
         .status-badge.straks { background: var(--yellow); color: var(--dark); }
         .status-badge.afgelopen { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
 
-        .card-divider {
-            width: 1px;
-            height: 48px;
-            background: rgba(255,255,255,0.08);
-            flex-shrink: 0;
-        }
+        .card-divider { width: 1px; height: 48px; background: rgba(255,255,255,0.08); flex-shrink: 0; }
 
-        .teams-row {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+        .teams-row { flex: 1; display: flex; align-items: center; gap: 16px; }
 
-        .team {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            min-width: 0;
-        }
-
+        .team { flex: 1; display: flex; align-items: center; gap: 14px; min-width: 0; }
         .team.away { flex-direction: row-reverse; }
 
         .team-logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-weight: 900;
-            font-size: 12px;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.15);
-            overflow: hidden;
+            width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-weight: 900; font-size: 12px; color: white;
+            border: 2px solid rgba(255,255,255,0.15); overflow: hidden;
         }
 
-        .team-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 3px;
-        }
+        .team-logo img { width: 100%; height: 100%; object-fit: contain; padding: 3px; }
 
-        .team-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--white);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
+        .team-name { font-size: 18px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .team.away .team-name { text-align: right; }
 
-        .score-block {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0 16px;
-            flex-shrink: 0;
-        }
-
-        .score {
-            font-size: 44px;
-            font-weight: 900;
-            color: var(--white);
-            min-width: 48px;
-            text-align: center;
-            line-height: 1;
-        }
-
+        .score-block { display: flex; align-items: center; gap: 8px; padding: 0 16px; flex-shrink: 0; }
+        .score { font-size: 44px; font-weight: 900; color: var(--white); min-width: 48px; text-align: center; line-height: 1; }
         .match-card.live .score { color: var(--green); }
+        .score-sep { font-size: 28px; font-weight: 300; color: rgba(240,244,255,0.2); }
 
-        .score-sep {
-            font-size: 28px;
-            font-weight: 300;
-            color: rgba(240,244,255,0.2);
-        }
+        .veld-badge { font-size: 11px; color: rgba(240,244,255,0.3); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 2px 8px; font-weight: 600; flex-shrink: 0; }
 
-        .veld-badge {
-            font-size: 11px;
-            color: rgba(240,244,255,0.3);
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 6px;
-            padding: 2px 8px;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 80px 40px;
-            color: rgba(240,244,255,0.2);
-        }
-
+        .empty-state { text-align: center; padding: 80px 40px; color: rgba(240,244,255,0.2); }
         .empty-icon { font-size: 64px; margin-bottom: 16px; }
         .empty-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
         .empty-sub { font-size: 14px; font-weight: 300; }
 
         .footer {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 24px 40px;
-            color: rgba(255,255,255,0.2);
-            font-size: 12px;
+            position: relative; z-index: 1;
+            padding: 24px 40px; color: rgba(255,255,255,0.2); font-size: 12px;
             border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between;
         }
 
-        .footer-scorr {
-            font-size: 20px;
-            font-weight: 900;
-            color: rgba(0,255,136,0.4);
-            letter-spacing: -1px;
-        }
-
-        .auto-refresh {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .refresh-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: blink 2s infinite;
-        }
+        .footer-scorr { font-size: 20px; font-weight: 900; color: rgba(0,255,136,0.4); letter-spacing: -1px; }
+        .auto-refresh { display: flex; align-items: center; gap: 8px; }
+        .refresh-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: blink 2s infinite; }
 
         @media (max-width: 768px) {
             .header { padding: 16px; flex-wrap: wrap; gap: 10px; }
@@ -398,7 +198,7 @@
             .live-ticker { padding: 8px 16px; }
             .ticker-update { display: none; }
             .container { padding: 12px 16px; }
-            .match-card { padding: 14px 16px; gap: 10px; flex-direction: row; align-items: center; }
+            .match-card { padding: 14px 16px; gap: 10px; }
             .match-status { flex-direction: column; align-items: center; min-width: 64px; gap: 4px; }
             .match-time { font-size: 18px; }
             .card-divider { display: none; }
@@ -416,12 +216,10 @@
 
         @media (max-width: 480px) {
             .club-name { font-size: 17px; }
-            .header-subtitle { font-size: 9px; }
             .scorr-logo { font-size: 26px; }
             .section-title { font-size: 14px; }
             .team-name { font-size: 13px; }
             .score { font-size: 24px; }
-            .match-time { font-size: 16px; }
         }
     </style>
 </head>
@@ -435,33 +233,26 @@
                 <div class="header-subtitle">Live Wedstrijden</div>
             </div>
         </div>
-        <div style="font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(240,244,255,0.4); border:1px solid rgba(240,244,255,0.2); padding:4px 14px; border-radius:20px;">PILOT</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(240,244,255,0.4);border:1px solid rgba(240,244,255,0.2);padding:4px 14px;border-radius:20px;">PILOT</div>
         <div class="scorr-logo">SCORR</div>
     </div>
 
     <div class="live-ticker">
-        <div class="live-pill">
-            <div class="live-dot"></div>
-            Live
-        </div>
+        <div class="live-pill"><div class="live-dot"></div>Live</div>
         <div class="ticker-text">Scores worden automatisch bijgewerkt</div>
-        <div class="ticker-update">
-            Laatste update: <span id="lastUpdate">—</span>
-        </div>
+        <div class="ticker-update">Laatste update: <span id="lastUpdate">—</span></div>
     </div>
 
     <div class="container">
-        <div id="competition-section">
-            <div class="section-header">
-                <div class="section-icon">⚽</div>
-                <div class="section-title">FC Purmerend — Komende 48 uur</div>
-                <div class="match-count" id="matchCount">laden...</div>
-            </div>
-            <div id="wedstrijden-list">
-                <div class="empty-state">
-                    <div class="empty-icon">⏳</div>
-                    <div class="empty-title">Wedstrijden laden...</div>
-                </div>
+        <div class="section-header">
+            <div class="section-icon">⚽</div>
+            <div class="section-title">FC Purmerend — Komende 48 uur</div>
+            <div class="match-count" id="matchCount">laden...</div>
+        </div>
+        <div id="wedstrijden-list">
+            <div class="empty-state">
+                <div class="empty-icon">⏳</div>
+                <div class="empty-title">Wedstrijden laden...</div>
             </div>
         </div>
     </div>
@@ -469,48 +260,31 @@
     <div class="footer">
         <div class="footer-scorr">SCORR</div>
         <div>Laatste update: <span id="footerUpdate">—</span></div>
-        <div class="auto-refresh">
-            <div class="refresh-dot"></div>
-            <span>Updates elke 10 seconden</span>
-        </div>
+        <div class="auto-refresh"><div class="refresh-dot"></div><span>Updates elke 10 seconden</span></div>
     </div>
 
-    <!-- Firebase compat versie - werkt op alle browsers inclusief LG TV -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
     <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyAputZcr7XyKRQL4-566a8gpS5R6SEL79U",
-            authDomain: "scorr-c604a.firebaseapp.com",
-            databaseURL: "https://scorr-c604a-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "scorr-c604a",
-            storageBucket: "scorr-c604a.firebasestorage.app",
-            messagingSenderId: "413840042688",
-            appId: "1:413840042688:web:3183c36fd20f27ac925b25"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        var db = firebase.database();
-
-        function updateTimestamp() {
-            var now = new Date();
-            var str = now.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-            document.getElementById('lastUpdate').textContent = str;
-            document.getElementById('footerUpdate').textContent = str;
-        }
+        var DB_URL = 'https://scorr-c604a-default-rtdb.europe-west1.firebasedatabase.app/wedstrijden.json';
 
         function getLogo(naam) {
             if (!naam) return null;
-            if (naam.toLowerCase().indexOf('purmerend') !== -1) return '/frontend/assets/logos/logo_fcpurmerend_nieuw.png';
-            if (naam.toLowerCase().indexOf('monnickendam') !== -1) return '/frontend/assets/logos/logo-512-512.png';
-            if (naam.toLowerCase().indexOf('graveland') !== -1) return '/frontend/assets/logos/images-3.png';
+            naam = naam.toLowerCase();
+            if (naam.indexOf('purmerend') !== -1) return '/frontend/assets/logos/logo_fcpurmerend_nieuw.png';
+            if (naam.indexOf('monnickendam') !== -1) return '/frontend/assets/logos/logo-512-512.png';
+            if (naam.indexOf('graveland') !== -1) return '/frontend/assets/logos/images-3.png';
             return null;
         }
 
         function getInitials(naam) {
             if (!naam) return '?';
             return naam.split(' ').map(function(w) { return w[0]; }).join('').substring(0, 3).toUpperCase();
+        }
+
+        function updateTimestamp() {
+            var now = new Date();
+            var str = now.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+            document.getElementById('lastUpdate').textContent = str;
+            document.getElementById('footerUpdate').textContent = str;
         }
 
         function renderWedstrijden(wedstrijden) {
@@ -520,6 +294,7 @@
 
             if (count === 0) {
                 list.innerHTML = '<div class="empty-state"><div class="empty-icon">📅</div><div class="empty-title">Geen wedstrijden gepland</div><div class="empty-sub">Er staan geen wedstrijden in de komende 48 uur</div></div>';
+                updateTimestamp();
                 return;
             }
 
@@ -530,8 +305,8 @@
             });
 
             var vandaagStr = new Date().toISOString().split('T')[0];
-
             var html = '';
+
             for (var i = 0; i < wedstrijden.length; i++) {
                 var w = wedstrijden[i];
                 var isLive = w.status === 'bezig';
@@ -551,16 +326,14 @@
 
                 var thuisLogo = getLogo(w.thuisteam);
                 var uitLogo = getLogo(w.uitteam);
-                var thuisInitials = getInitials(w.thuisteam);
-                var uitInitials = getInitials(w.uitteam);
 
                 var thuisLogoHtml = thuisLogo
                     ? '<div class="team-logo" style="background:white;"><img src="' + thuisLogo + '"></div>'
-                    : '<div class="team-logo" style="background:#003399;">' + thuisInitials + '</div>';
+                    : '<div class="team-logo" style="background:#003399;">' + getInitials(w.thuisteam) + '</div>';
 
                 var uitLogoHtml = uitLogo
                     ? '<div class="team-logo" style="background:white;"><img src="' + uitLogo + '"></div>'
-                    : '<div class="team-logo" style="background:#1E2749;">' + uitInitials + '</div>';
+                    : '<div class="team-logo" style="background:#1E2749;">' + getInitials(w.uitteam) + '</div>';
 
                 var scoreHtml = (isLive || isAfgelopen || isRust)
                     ? '<div class="score">' + (w.thuisscore || 0) + '</div><div class="score-sep">—</div><div class="score">' + (w.uitscore || 0) + '</div>'
@@ -588,24 +361,42 @@
             updateTimestamp();
         }
 
-        db.ref('wedstrijden').on('value', function(snapshot) {
-            var wedstrijden = [];
-            if (snapshot.exists()) {
-                snapshot.forEach(function(child) {
-                    var data = child.val();
-                    var wedstrijdDatum = new Date(data.datum + 'T00:00:00');
-                    var nu = new Date();
-                    var verschilUren = (wedstrijdDatum - nu) / (1000 * 60 * 60);
-                    if (verschilUren >= -24 && verschilUren <= 48) {
-                        wedstrijden.push(data);
-                    }
-                });
-            }
-            renderWedstrijden(wedstrijden);
-        });
+        function fetchWedstrijden() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', DB_URL, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    try {
+                        var data = JSON.parse(xhr.responseText);
+                        var wedstrijden = [];
+                        var nu = new Date();
 
-        updateTimestamp();
-        setInterval(updateTimestamp, 10000);
+                        if (data) {
+                            for (var key in data) {
+                                if (data.hasOwnProperty(key)) {
+                                    var w = data[key];
+                                    if (w && w.datum) {
+                                        var wedstrijdDatum = new Date(w.datum + 'T00:00:00');
+                                        var verschilUren = (wedstrijdDatum - nu) / (1000 * 60 * 60);
+                                        if (verschilUren >= -24 && verschilUren <= 48) {
+                                            wedstrijden.push(w);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        renderWedstrijden(wedstrijden);
+                    } catch(e) {
+                        console.log('Parse error:', e);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Direct laden en daarna elke 10 seconden
+        fetchWedstrijden();
+        setInterval(fetchWedstrijden, 10000);
     </script>
 </body>
 </html>
