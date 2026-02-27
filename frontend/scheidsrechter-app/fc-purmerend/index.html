@@ -1070,7 +1070,7 @@ saveTimerState();
         awayScore.textContent = awayScoreValue;
     }
     // Firebase sync
-    const wedstrijdId = localStorage.getItem('wedstrijdId');
+    var wedstrijdId = localStorage.getItem('wedstrijdId');
     if (wedstrijdId && window._firebaseDb) {
         import("https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js").then(({ ref, update }) => {
             update(ref(window._firebaseDb, `wedstrijden/${wedstrijdId}`), {
