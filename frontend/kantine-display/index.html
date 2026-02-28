@@ -175,15 +175,12 @@
         .team.away { flex-direction: row-reverse; }
 
         /* Logo - geen zwarte rand */
-        .team-logo {
-            width: 72px; height: 72px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-            font-weight: 900; font-size: 12px; color: white;
-            overflow: hidden;
-            background: white;
-        }
+        .team-logo img {
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
 
         .team-logo img {
     width: 100%;
