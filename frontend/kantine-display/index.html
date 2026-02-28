@@ -298,13 +298,8 @@
         var DB_URL = 'https://scorr-c604a-default-rtdb.europe-west1.firebasedatabase.app/wedstrijden.json';
 
         function getLogo(naam) {
-            if (!naam) return null;
-            naam = naam.toLowerCase();
-            if (naam.indexOf('purmerend') !== -1) return '/frontend/assets/logos/logo_fcpurmerend_nieuw.png';
-            if (naam.indexOf('monnickendam') !== -1) return '/frontend/assets/logos/logo-512-512.png';
-            if (naam.indexOf('graveland') !== -1 || naam.indexOf('gaveland') !== -1) return '/frontend/assets/logos/images-3.png';
-            return null;
-        }
+    return null;
+}
 
         function getInitials(naam) {
             if (!naam) return '?';
