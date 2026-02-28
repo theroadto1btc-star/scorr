@@ -186,11 +186,13 @@
         }
 
         .team-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    mix-blend-mode: multiply;
+}
 
         .team-logo.initials {
             background: #003399;
@@ -367,7 +369,7 @@
 
                 var isVandaag = w.datum === vandaagStr;
                 var badgeClass = (isLive || isRust) ? 'live' : isAfgelopen ? 'afgelopen' : isVandaag ? 'straks' : 'morgen';
-                var badgeText = isLive ? 'LIVE' : isRust ? 'RUST' : isAfgelopen ? 'Afgelopen' : isVandaag ? 'Straks' : 'Morgen';
+                var badgeText = isLive ? 'LIVE' : isRust ? 'HT' : isAfgelopen ? 'FT' : isVandaag ? 'Vandaag' : 'Morgen';
 
                 // Tijd display: minuut als live, anders tijdstip
                 var minutStr = getMinuut(w);
@@ -377,7 +379,7 @@
                 if (w.datum) {
                     var d = new Date(w.datum + 'T00:00:00');
                     datumStr = d.toLocaleDateString('nl-NL', {weekday:'short', day:'numeric', month:'short'});
-                }
+                }!  
 
                 var thuisLogo = getLogo(w.thuisteam);
                 var uitLogo = getLogo(w.uitteam);
