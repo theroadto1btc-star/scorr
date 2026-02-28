@@ -990,18 +990,31 @@ saveTimerState();
         }
 
         function showTimeExpiredNotification() {
-            timerDisplay.style.animation = 'flash 0.6s ease-in-out 4';
-            const isHalftime = currentHalf === 1;
-            const title = isHalftime ? '📣 RUSTSIGNAAL!' : '🏆 EINDSIGNAAL!';
-            const message = isHalftime
-                ? `1e helft afgelopen.\n(${halfDuration}+${injuryTime} min)\n\nDruk op Volgende Helft.`
-                : `Wedstrijd afgelopen!\n(${halfDuration}+${injuryTime} min)`;
-            setTimeout(() => {
-                timerDisplay.style.animation = '';
-                alert(`${title}\n\n${message}`);
-                pauseTimer();
-            }, 2000);
+    timerDisplay.style.animation = 'flash 0.6s ease-in-out 4';
+    const isHalftime = currentHalf === 1;
+    const title = isHalftime ? '📣 RUSTSIGNAAL!' : '🏆 EINDSIGNAAL!';
+    const message = isHalftime
+        ? `1e helft afgelopen.\n(${halfDuration}+${injuryTime} min)\n\nDruk op Volgende Helft.`
+        : `Wedstrijd afgelopen!\n(${halfDuration}+${injuryTime} min)`;
+
+    setTimeout(() => {
+        timerDisplay.style.animation = '';
+        alert(`${title}\n\n${message}`);
+        pauseTimer();
+
+        // Firebase status updaten bij eindsignaal
+        if (!isHalftime) {
+            var wId = localStorage.getItem('wedstrijdId');
+            if (wId && window._firebaseDb) {
+                import("https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js").then(function(m) {
+                    m.update(m.ref(window._firebaseDb, 'wedstrijden/' + wId), {
+                        status: 'afgelopen'
+                    });
+                });
+            }
         }
+    }, 2000);
+}
 
         async function pauseTimer() {
             if (isRunning) {
